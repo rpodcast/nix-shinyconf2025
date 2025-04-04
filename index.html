@@ -6,9 +6,13 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.6.42">
 
+  <meta name="author" content="Eric Nantz">
+  <meta name="dcterms.date" content="2025-04-11">
   <title>In the Nix of Time</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -28,7 +32,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-00ac2f6af1389919a18f42df5b7c0002.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-88a5627879a3a324e47b17ecba0d8f11.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -127,14 +131,145 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">In the Nix of Time</h1>
+  <p class="subtitle">A new approach to Shiny development &amp; deployment with Nix and {rix}</p>
 
 <div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Eric Nantz 
+</div>
+        <p class="quarto-title-affiliation">
+            Statistician / Developer / Podcaster
+          </p>
+        <p class="quarto-title-affiliation">
+            Eli Lilly &amp; Company
+          </p>
+        <p class="quarto-title-affiliation">
+            <i class="fa-brands fa-bluesky" aria-label="bluesky"></i> <span class="citation" data-cites="rpodcast.bsky.social">@rpodcast.bsky.social</span>
+          </p>
+        <p class="quarto-title-affiliation">
+            <i class="fa-brands fa-mastodon" aria-label="mastodon"></i> <span class="citation" data-cites="rpodcast">@rpodcast</span><span class="citation" data-cites="podcastindex.social">@podcastindex.social</span>
+          </p>
+        <p class="quarto-title-affiliation">
+            <i class="fa-brands fa-linkedin" aria-label="linkedin"></i> <span class="citation" data-cites="eric-nantz">@eric-nantz</span>
+          </p>
+    </div>
 </div>
 
+  <p class="date">April 11, 2025</p>
 </section>
 <section id="slide-1" class="slide level2">
 <h2>Slide 1</h2>
 <p>Hello world!</p>
+</section>
+<section id="slide-2" class="slide level2">
+<h2>Slide 2</h2>
+
+<img data-src="https://vhs.charm.sh/vhs-6j0gMkv7ymBp3UfiZHik8w.gif" class="r-stretch"></section>
+<section id="linux-friends" class="slide level2">
+<h2>Linux Friends</h2>
+<aside class="notes">
+<p>Left half: JB with their logo and headshots, then show screen grabs of each Nix focused episode player * Nix challenge launched in March 2022</p>
+<p>Right half: Martin Wimpress, show screengrab of youtube livestream * Martin Wimpress joins Determinant Systems in 2023 * Livestream with his public exploration of Nix https://www.youtube.com/watch?v=v9GM8k9Aa7k * Aired April 6, 2023</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="two-worlds-collide" class="slide level2">
+<h2>Two Worlds Collide</h2>
+<p>Bruno begins exploring Nix</p>
+<aside class="notes">
+<ul>
+<li>July 2023 https://brodrigues.co/posts/2023-07-13-nix_for_r_part1.html</li>
+<li>Covered practically his entire series on Nix with R Weekly
+<ul>
+<li>2024-W15 (Part 11) - highlight</li>
+<li>2024-W40 (rix on CRAN) - highlight</li>
+<li>2023-W32 (part 3)</li>
+<li>2023-W29 (part 1) - highlight https://brodrigues.co/posts/2023-07-13-nix_for_r_part1.html</li>
+<li>2024-W02 (part 8)</li>
+<li>2023-W30 (part 2)</li>
+<li>2024-W10 (part 10)</li>
+<li>2023-W43 (part 7)</li>
+<li>2023-W33 (YouTube video introducing Nix)</li>
+<li>2024-W36 (part 12)</li>
+<li>2023-W38 (part 5)</li>
+<li>2024-W20 (Reproducible Nix workshop)</li>
+<li>2024-W06 (part 9)</li>
+<li>2023-W34 (part 4)</li>
+<li>2024-W28 (YouTube video introducing Rix)</li>
+<li>2023-W35 (YouTube video running old project with old R and old packages)</li>
+<li>2023-W47 (YouTube video GH actions with Nix)</li>
+</ul></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="what-is-nix" class="slide level2">
+<h2>What is Nix?</h2>
+<ul>
+<li>At heart: Nix is a package manager</li>
+<li>Myth 1: Nix is an entire operating system
+<ul>
+<li>That is NixOS</li>
+<li>You can use Nix on most Linux distributions, Mac OS X, Windows via WSL</li>
+</ul></li>
+<li>Not a full container, not a full VM</li>
+</ul>
+<aside class="notes">
+<p>Mention history of Nix (founder, their dissertation)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="advantages-over-containers" class="slide level2">
+<h2>Advantages over containers</h2>
+<ul>
+<li>Less overhead</li>
+<li>Still feels like native use of OS</li>
+<li>No need for volume mounts</li>
+</ul>
+</section>
+<section id="a-few-papercuts-remain" class="slide level2">
+<h2>A Few Papercuts remain</h2>
+<ul>
+<li>Compiles from source for package versions not available in a binary cache</li>
+<li>Disk space usage could be an issue on lower-spec hardware</li>
+<li>Debugging Nix errors can be on the cryptic side</li>
+</ul>
+</section>
+<section id="why-for-shiny" class="slide level2">
+<h2>Why for Shiny?</h2>
+<ul>
+<li>It’s never just Shiny …</li>
+<li>Manage dependencies not just at the R level</li>
+<li>Support multi-lingual projects</li>
+</ul>
 
 
 </section>
@@ -194,7 +329,7 @@
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: false,
+        slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',
