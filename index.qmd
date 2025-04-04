@@ -1,0 +1,95 @@
+---
+title: "In the Nix of Time"
+subtitle: "A new approach to Shiny development & deployment with Nix and {rix}"
+format:
+  clean-revealjs: 
+    link-external-newwindow: true
+    menu: true
+    theme: [default, custom.scss]
+    code-line-numbers: false
+author: 
+  - name: Eric Nantz
+    affiliation:
+      - Statistician / Developer / Podcaster
+      - Eli Lilly & Company
+      - "{{< fa brands bluesky >}} @rpodcast.bsky.social"
+      - "{{< fa brands mastodon >}} @rpodcast@podcastindex.social"
+      - "{{< fa brands linkedin >}} @eric-nantz"
+date: April 11, 2025
+---
+
+## Slide 1
+
+Hello world!
+
+## Slide 2
+
+![](https://vhs.charm.sh/vhs-6j0gMkv7ymBp3UfiZHik8w.gif)
+
+## Linux Friends
+
+::: {.notes}
+Left half: JB with their logo and headshots, then show screen grabs of each Nix focused episode player
+* Nix challenge launched in March 2022
+
+Right half: Martin Wimpress, show screengrab of youtube livestream
+* Martin Wimpress joins Determinant Systems in 2023
+* Livestream with his public exploration of Nix https://www.youtube.com/watch?v=v9GM8k9Aa7k
+* Aired April 6, 2023
+:::
+
+## Two Worlds Collide
+
+Bruno begins exploring Nix
+
+::: {.notes}
+* July 2023 https://brodrigues.co/posts/2023-07-13-nix_for_r_part1.html
+* Covered practically his entire series on Nix with R Weekly
+    * 2024-W15 (Part 11) - highlight
+    * 2024-W40 (rix on CRAN) - highlight
+    * 2023-W32 (part 3)
+    * 2023-W29 (part 1) - highlight https://brodrigues.co/posts/2023-07-13-nix_for_r_part1.html
+    * 2024-W02 (part 8)
+    * 2023-W30 (part 2)
+    * 2024-W10 (part 10)
+    * 2023-W43 (part 7)
+    * 2023-W33 (YouTube video introducing Nix)
+    * 2024-W36 (part 12)
+    * 2023-W38 (part 5)
+    * 2024-W20 (Reproducible Nix workshop)
+    * 2024-W06 (part 9)
+    * 2023-W34 (part 4)
+    * 2024-W28 (YouTube video introducing Rix)
+    * 2023-W35 (YouTube video running old project with old R and old packages)
+    * 2023-W47 (YouTube video GH actions with Nix)
+:::
+
+## What is Nix?
+
+* At heart: Nix is a package manager
+* Myth 1: Nix is an entire operating system
+    * That is NixOS
+    * You can use Nix on most Linux distributions, Mac OS X, Windows via WSL
+* Not a full container, not a full VM
+
+::: {.notes}
+Mention history of Nix (founder, their dissertation)
+:::
+
+## Advantages over containers
+
+* Less overhead
+* Still feels like native use of OS
+* No need for volume mounts
+
+## A Few Papercuts remain
+
+* Compiles from source for package versions not available in a binary cache
+* Disk space usage could be an issue on lower-spec hardware
+* Debugging Nix errors can be on the cryptic side
+
+## Why for Shiny?
+
+* It's never just Shiny ...
+* Manage dependencies not just at the R level
+* Support multi-lingual projects
