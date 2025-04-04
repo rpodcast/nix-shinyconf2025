@@ -1,2 +1,5 @@
 # nix build files
 result
+
+/.quarto/
+_site
