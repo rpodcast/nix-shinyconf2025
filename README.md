@@ -8,6 +8,9 @@ The Shiny framework has brought tremendous innovation to data science for R and 
 
 * Terminal sessions were recorded using the [VHS CLI video recorder](https://github.com/charmbracelet/vhs)
 * Virtual machines used in demonstrations created with [Quickemu](https://github.com/quickemu-project/quickemu) - Quickly create and run optimised Windows, MacOS and Linux virtual machines
+* Eelco Dolstra: The Evolution of Nix (SoN2022 Public Lecture Series) https://www.youtube.com/watch?v=h8hWX_aGGDc
+* Eelco Dolstra: The Nix Roadmap (NicCon 2018) https://www.youtube.com/watch?v=8M6yvJC00J4 
+
 
 ### Image Credits
 
