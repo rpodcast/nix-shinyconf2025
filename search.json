@@ -32,21 +32,35 @@
     "href": "index.html#linux-friends",
     "title": "In the Nix of Time",
     "section": "Linux Friends",
-    "text": "Linux Friends\n\nLeft half: JB with their logo and headshots, then show screen grabs of each Nix focused episode player * Nix challenge launched in March 2022\nRight half: Martin Wimpress, show screengrab of youtube livestream * Martin Wimpress joins Determinant Systems in 2023 * Livestream with his public exploration of Nix https://www.youtube.com/watch?v=v9GM8k9Aa7k * Aired April 6, 2023"
+    "text": "Linux Friends\n\n\n\n\n\n\nLeft half: JB with their logo and headshots, then show screen grabs of each Nix focused episode player * Nix challenge launched in March 2022\nRight half: Martin Wimpress, show screengrab of youtube livestream * Martin Wimpress joins Determinant Systems in 2023 * Livestream with his public exploration of Nix https://www.youtube.com/watch?v=v9GM8k9Aa7k * Aired April 6, 2023"
   },
   {
     "objectID": "index.html#two-worlds-collide",
     "href": "index.html#two-worlds-collide",
     "title": "In the Nix of Time",
     "section": "Two Worlds Collide",
-    "text": "Two Worlds Collide\nBruno begins exploring Nix\n\n\nJuly 2023 https://brodrigues.co/posts/2023-07-13-nix_for_r_part1.html\nCovered practically his entire series on Nix with R Weekly\n\n2024-W15 (Part 11) - highlight\n2024-W40 (rix on CRAN) - highlight\n2023-W32 (part 3)\n2023-W29 (part 1) - highlight https://brodrigues.co/posts/2023-07-13-nix_for_r_part1.html\n2024-W02 (part 8)\n2023-W30 (part 2)\n2024-W10 (part 10)\n2023-W43 (part 7)\n2023-W33 (YouTube video introducing Nix)\n2024-W36 (part 12)\n2023-W38 (part 5)\n2024-W20 (Reproducible Nix workshop)\n2024-W06 (part 9)\n2023-W34 (part 4)\n2024-W28 (YouTube video introducing Rix)\n2023-W35 (YouTube video running old project with old R and old packages)\n2023-W47 (YouTube video GH actions with Nix)"
+    "text": "Two Worlds Collide\n\n\n\n\n\n\n\nJuly 2023 https://brodrigues.co/posts/2023-07-13-nix_for_r_part1.html\nCovered practically his entire series on Nix with R Weekly\n\n2024-W15 (Part 11) - highlight\n2024-W40 (rix on CRAN) - highlight\n2023-W32 (part 3)\n2023-W29 (part 1) - highlight https://brodrigues.co/posts/2023-07-13-nix_for_r_part1.html\n2024-W02 (part 8)\n2023-W30 (part 2)\n2024-W10 (part 10)\n2023-W43 (part 7)\n2023-W33 (YouTube video introducing Nix)\n2024-W36 (part 12)\n2023-W38 (part 5)\n2024-W20 (Reproducible Nix workshop)\n2024-W06 (part 9)\n2023-W34 (part 4)\n2024-W28 (YouTube video introducing Rix)\n2023-W35 (YouTube video running old project with old R and old packages)\n2023-W47 (YouTube video GH actions with Nix)"
   },
   {
     "objectID": "index.html#what-is-nix",
     "href": "index.html#what-is-nix",
     "title": "In the Nix of Time",
     "section": "What is Nix?",
-    "text": "What is Nix?\n\nAt heart: Nix is a package manager\nMyth 1: Nix is an entire operating system\n\nThat is NixOS\nYou can use Nix on most Linux distributions, Mac OS X, Windows via WSL\n\nNot a full container, not a full VM\n\n\nMention history of Nix (founder, their dissertation)"
+    "text": "What is Nix?\n\nAt heart: Nix is a package manager\nKey features\n\nAll build files collected in the Nix store (like graph database)\nImmutable, read-only file system\nNix is also a functional language used to describe derivations\nSimilar to Git: Each path in the Nix store is a hash value based on all input information for that piece of software\nDerivations give build instructions for items in Nix store\n\nEverything is explicit, transparent\n\n\n\nPurely functional language (uses immutability of the nix store)\nLazy language, dynamically typed\nMention history of Nix (founder, their dissertation)"
+  },
+  {
+    "objectID": "index.html#history-of-nix",
+    "href": "index.html#history-of-nix",
+    "title": "In the Nix of Time",
+    "section": "History of Nix",
+    "text": "History of Nix\n\n\nEelco Dolstra came up with the idea of Nix in his dissertation (A tool called Maak)\nNixOS in 2006 - Started as an experiment to verify build purity"
+  },
+  {
+    "objectID": "index.html#mythbusting",
+    "href": "index.html#mythbusting",
+    "title": "In the Nix of Time",
+    "section": "Mythbusting",
+    "text": "Mythbusting\n\nMyth 1: Nix is an entire operating system\n\nThat is NixOS\nYou can use Nix on most Linux distributions, Mac OS X, Windows via WSL\n\nNot a full container, not a full VM"
   },
   {
     "objectID": "index.html#advantages-over-containers",
