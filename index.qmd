@@ -28,6 +28,14 @@ Hello world!
 
 ## Linux Friends
 
+::: {.r-stack}
+![](assets/img/jb_collage.png){.fragment}
+
+![](assets/img/martin_wimpress.png){.fragment}
+
+![](assets/img/martin_livestream_screengrab.png){.fragment}
+:::
+
 ::: {.notes}
 Left half: JB with their logo and headshots, then show screen grabs of each Nix focused episode player
 * Nix challenge launched in March 2022
@@ -40,7 +48,15 @@ Right half: Martin Wimpress, show screengrab of youtube livestream
 
 ## Two Worlds Collide
 
-Bruno begins exploring Nix
+::: {.r-stack}
+
+![](assets/img/bruno.jpg){.fragment .absolute top=200 left=0}
+
+![](assets/img/bruno_nix_part1.png){.fragment .absolute top=500 left=0}
+
+![](assets/img/bruno_series_all.png){.fragment .absolute top=100 right=0}
+:::
+
 
 ::: {.notes}
 * July 2023 https://brodrigues.co/posts/2023-07-13-nix_for_r_part1.html
@@ -67,14 +83,34 @@ Bruno begins exploring Nix
 ## What is Nix?
 
 * At heart: Nix is a package manager
+* Key features
+    + All build files collected in the **Nix store** (like graph database)
+    * Immutable, read-only file system
+    * Nix is also a functional language used to describe derivations
+    * Similar to Git: Each path in the Nix store is a hash value based on all input information for that piece of software
+    * Derivations give build instructions for items in Nix store
+* Everything is explicit, transparent
+
+::: {.notes}
+* Purely functional language (uses immutability of the nix store)
+* Lazy language, dynamically typed
+* Mention history of Nix (founder, their dissertation)
+:::
+
+## History of Nix
+
+::: {.notes}
+* Eelco Dolstra came up with the idea of Nix in his dissertation (A tool called Maak)
+* NixOS in 2006 - Started as an experiment to verify build purity
+:::
+
+## Mythbusting
+
 * Myth 1: Nix is an entire operating system
     * That is NixOS
     * You can use Nix on most Linux distributions, Mac OS X, Windows via WSL
 * Not a full container, not a full VM
 
-::: {.notes}
-Mention history of Nix (founder, their dissertation)
-:::
 
 ## Advantages over containers
 
