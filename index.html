@@ -338,8 +338,15 @@ Eric Nantz
 <span id="cb1-5"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix-store</span> <span class="at">--query</span> <span class="at">--referers</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span></span>
 <span id="cb1-6"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-7"><a aria-hidden="true" tabindex="-1"></a><span class="co"># transitive closure (recursive dependencies)</span></span>
-<span id="cb1-8"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix-store</span> <span class="at">--query</span> <span class="at">--requisites</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-8"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix-store</span> <span class="at">--query</span> <span class="at">--requisites</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span></span>
+<span id="cb1-9"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a aria-hidden="true" tabindex="-1"></a><span class="co"># graph</span></span>
+<span id="cb1-11"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix-store</span> <span class="at">--query</span> <span class="at">--graph</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span> <span class="kw">|</span> <span class="ex">dot</span> <span class="at">-Tsvg</span> <span class="at">-o</span> scratch/r.svg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
+<section id="r-graph" class="slide level2">
+<h2>R Graph</h2>
+
+<img data-src="assets/img/r.svg" class="r-stretch"></section>
 <section id="history-of-nix" class="slide level2">
 <h2>History of Nix</h2>
 <aside class="notes">

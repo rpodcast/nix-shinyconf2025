@@ -53,7 +53,14 @@
     "href": "index.html#nix-store",
     "title": "In the Nix of Time",
     "section": "Nix Store",
-    "text": "Nix Store\nLike a graph database * Entries in store are like nodes, relationships among them are edges\n# edges pointing to R\nnix-store --query --references $(which R)\n\n# edges pointing from R (i.e. packages)\nnix-store --query --referers $(which R)\n\n# transitive closure (recursive dependencies)\nnix-store --query --requisites $(which R)"
+    "text": "Nix Store\nLike a graph database * Entries in store are like nodes, relationships among them are edges\n# edges pointing to R\nnix-store --query --references $(which R)\n\n# edges pointing from R (i.e. packages)\nnix-store --query --referers $(which R)\n\n# transitive closure (recursive dependencies)\nnix-store --query --requisites $(which R)\n\n# graph\nnix-store --query --graph $(which R) | dot -Tsvg -o scratch/r.svg"
+  },
+  {
+    "objectID": "index.html#r-graph",
+    "href": "index.html#r-graph",
+    "title": "In the Nix of Time",
+    "section": "R Graph",
+    "text": "R Graph"
   },
   {
     "objectID": "index.html#history-of-nix",
