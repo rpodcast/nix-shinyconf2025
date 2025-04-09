@@ -49,6 +49,13 @@
     "text": "What is Nix?\n\nAt heart: Nix is a package manager\nKey features\n\nAll build files collected in the Nix store (like graph database)\nImmutable, read-only file system\nNix is also a functional language used to describe derivations\nSimilar to Git: Each path in the Nix store is a hash value based on all input information for that piece of software\nDerivations give build instructions for items in Nix store\n\nEverything is explicit, transparent\n\n\n\nPurely functional language (uses immutability of the nix store)\nLazy language, dynamically typed\nMention history of Nix (founder, their dissertation)"
   },
   {
+    "objectID": "index.html#nix-store",
+    "href": "index.html#nix-store",
+    "title": "In the Nix of Time",
+    "section": "Nix Store",
+    "text": "Nix Store\nLike a graph database * Entries in store are like nodes, relationships among them are edges\n# edges pointing to R\nnix-store --query --references $(which R)\n\n# edges pointing from R (i.e. packages)\nnix-store --query --referers $(which R)\n\n# transitive closure (recursive dependencies)\nnix-store --query --requisites $(which R)"
+  },
+  {
     "objectID": "index.html#history-of-nix",
     "href": "index.html#history-of-nix",
     "title": "In the Nix of Time",
