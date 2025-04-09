@@ -112,7 +112,13 @@ nix-store --query --referers $(which R)
 # transitive closure (recursive dependencies)
 nix-store --query --requisites $(which R)
 
+# graph
+nix-store --query --graph $(which R) | dot -Tsvg -o scratch/r.svg
 ```
+
+## R Graph
+
+![](assets/img/r.svg)
 
 
 ## History of Nix
