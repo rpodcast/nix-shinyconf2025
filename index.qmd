@@ -97,6 +97,24 @@ Right half: Martin Wimpress, show screengrab of youtube livestream
 * Mention history of Nix (founder, their dissertation)
 :::
 
+## Nix Store
+
+Like a graph database
+* Entries in store are like nodes, relationships among them are edges
+
+```bash
+# edges pointing to R
+nix-store --query --references $(which R)
+
+# edges pointing from R (i.e. packages)
+nix-store --query --referers $(which R)
+
+# transitive closure (recursive dependencies)
+nix-store --query --requisites $(which R)
+
+```
+
+
 ## History of Nix
 
 ::: {.notes}
