@@ -97,10 +97,11 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-88a5627879a3a324e47b17ecba0d8f11.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-970d4334bc265350af9dd0b407c1733b.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-codewindow/codewindow.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
@@ -194,7 +195,7 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
+<section id="title-slide" data-background-color="black" data-background-image="assets/img/futuristic_city.jpg" data-background-opacity="0.4" data-background-size="contain" class="quarto-title-block center">
   <h1 class="title">In the Nix of Time</h1>
   <p class="subtitle">A new approach to Shiny development &amp; deployment with Nix and {rix}</p>
 
@@ -210,42 +211,40 @@ Eric Nantz
             Eli Lilly &amp; Company
           </p>
         <p class="quarto-title-affiliation">
-            <i class="fa-brands fa-bluesky" aria-label="bluesky"></i> <span class="citation" data-cites="rpodcast.bsky.social">@rpodcast.bsky.social</span>
+            <i class="fa-brands fa-bluesky" aria-label="bluesky"></i> <a href="https://bsky.app/profile/rpodcast.bsky.social"><span class="citation" data-cites="rpodcast.bsky.social">@rpodcast.bsky.social</span></a>
           </p>
         <p class="quarto-title-affiliation">
-            <i class="fa-brands fa-mastodon" aria-label="mastodon"></i> <span class="citation" data-cites="rpodcast">@rpodcast</span><span class="citation" data-cites="podcastindex.social">@podcastindex.social</span>
+            <i class="fa-brands fa-mastodon" aria-label="mastodon"></i> <a href="https://podcastindex.social/@rpodcast"><span class="citation" data-cites="rpodcast">@rpodcast</span><span class="citation" data-cites="podcastindex.social">@podcastindex.social</span></a>
           </p>
         <p class="quarto-title-affiliation">
-            <i class="fa-brands fa-linkedin" aria-label="linkedin"></i> <span class="citation" data-cites="eric-nantz">@eric-nantz</span>
+            <i class="fa-brands fa-linkedin" aria-label="linkedin"></i> <a href="https://www.linkedin.com/in/eric-nantz-6621617/"><span class="citation" data-cites="eric-nantz">@eric-nantz</span></a>
           </p>
     </div>
 </div>
 
-  <p class="date">April 11, 2025</p>
+  <p class="date">2025-04-11</p>
 </section>
 <section id="its-never-just-shiny" class="slide level2">
-<h2>It’s Never Just Shiny</h2>
+<h2>It’s Never Just Shiny …</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
 <ul>
-<li>Application requires additional R packages</li>
+<li>Additional R packages</li>
 <li>External services or APIs</li>
-<li>Additional languages (Python, JavaScript)</li>
-<li>Custom software used as backend for packages</li>
+<li>Other languages (Python, JavaScript)</li>
+<li>Software dependencies for packages</li>
 <li>Deployment platforms</li>
 </ul>
 </div><div class="column" style="width:40%;">
-<p>Add pic here</p>
+<p><img data-src="assets/img/warehouse.jpg"></p>
 </div></div>
 </section>
 <section id="managing-dependencies" class="slide level2">
 <h2>Managing Dependencies</h2>
-<div class="columns">
-<div class="column">
-<p><img data-src="assets/img/renv.svg"></p>
-</div><div class="column">
-<p><img data-src="assets/img/docker-logo-blue.svg"></p>
-</div></div>
+<div class="r-stack">
+<p><img data-src="assets/img/renv.svg" class="fragment absolute" style="top: 100px; left: 0px; width: 40%; "></p>
+<p><img data-src="assets/img/docker-logo-blue.svg" class="fragment absolute" style="top: 250px; right: 50px; width: 50%; "></p>
+</div>
 </section>
 <section id="slide-2" class="slide level2">
 <h2>Slide 2</h2>
@@ -274,13 +273,22 @@ Eric Nantz
       }</style></aside>
 </section>
 <section id="brunoslide-id" class="slide level2" data-menu-title="Bruno Discovers Nix">
-<h2></h2>
+<h2>Worlds Collide</h2>
 <div class="r-stack">
-<p><img data-src="assets/img/bruno.jpg" class="fragment absolute" style="top: 200px; left: 0px; "></p>
-<p><img data-src="assets/img/bruno_nix_part1.png" class="fragment absolute" style="top: 500px; left: 0px; "></p>
-<p><img data-src="assets/img/bruno_series_all.png" class="fragment absolute" style="top: 100px; right: 0px; "></p>
+<div class="fragment">
+<p><img data-src="assets/img/bruno.jpg" class="absolute" style="top: 200px; left: 0px; width: 30%; "></p>
+<div class="absolute" style="top: 530px; left: 0px; ">
+<p>Bruno Rodriguez</p>
+</div>
+</div>
+<div class="fragment">
+<p><img data-src="assets/img/rweekly_issue_top.png" class="absolute" style="top: 40px; right: 10px; "></p>
+<p><img data-src="assets/img/rweekly_issue_bottom.png" class="absolute" style="top: 230px; right: 10px; "></p>
+</div>
+<p><img data-src="assets/img/bruno_series_all.png" class="fragment absolute" style="top: 60px; right: 0px; "></p>
 </div>
 <aside class="notes">
+<p><img data-src="assets/img/bruno_nix_part1.png" class="fragment absolute" style="top: 500px; left: 0px; "></p>
 <ul>
 <li>July 2023 https://brodrigues.co/posts/2023-07-13-nix_for_r_part1.html</li>
 <li>Covered practically his entire series on Nix with R Weekly
@@ -316,8 +324,24 @@ Eric Nantz
           display:block!important;
       }</style></aside>
 </section>
-<section id="what-is-nix" class="slide level2">
-<h2>What is Nix?</h2>
+<section>
+<section id="what-is-nix" class="title-slide slide level1 center">
+<h1>🤔 What is Nix?</h1>
+
+</section>
+<section id="nixhighlevel-id" class="slide level2" data-menu-title="Nix High-Level Overview">
+<h2></h2>
+<div class="r-fit-text">
+<p>Package Manager</p>
+<p>Domain-Specific Language</p>
+<p>Immutable Installation</p>
+<p>Sandboxed Environments</p>
+</div>
+</section></section>
+<section>
+<section id="again-what-is-nix" class="title-slide slide level1 center">
+<h1>🤔 Again, what is Nix?</h1>
+<aside class="notes">
 <ul>
 <li>At heart: Nix is a package manager</li>
 <li>Key features
@@ -329,9 +353,6 @@ Eric Nantz
 <li>Derivations give build instructions for items in Nix store</li>
 </ul></li>
 <li>Everything is explicit, transparent</li>
-</ul>
-<aside class="notes">
-<ul>
 <li>Purely functional language (uses immutability of the nix store)</li>
 <li>Lazy language, dynamically typed</li>
 <li>Mention history of Nix (founder, their dissertation)</li>
@@ -348,24 +369,85 @@ Eric Nantz
           display:block!important;
       }</style></aside>
 </section>
+<section id="a-package-manager" class="slide level2">
+<h2>A Package Manager</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Collection of over 120,000 <strong>recipes</strong> of apps, utilities, languages, etc.</li>
+<li>Package repository <code>nixpkgs</code> available on <a href="">GitHub</a>
+<ul>
+<li>Ability to pin repository to specific point in time</li>
+</ul></li>
+<li>Required system dependencies are automatically installed</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="assets/img/nix_packages_searchbar.png"></p>
+<p><img data-src="assets/img/nix_package_R_entry.png"></p>
+</div></div>
+</section>
+<section id="installing-nix" class="slide level2">
+<h2>Installing Nix</h2>
+<p><strong>Easy Mode</strong>: <a href="https://zero-to-nix.com/start/install/">Determinant Systems Nix Installer</a></p>
+<div class="codewindow">
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">--proto</span> <span class="st">'=https'</span> <span class="at">--tlsv1.2</span> <span class="at">-sSf</span> <span class="at">-L</span> https://install.determinate.systems/nix <span class="kw">|</span> <span class="dt">\</span></span>
+<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">sh</span> <span class="at">-s</span> <span class="at">--</span> install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Supported platforms: Linux, Mac OS X, and Windows (via Windows Subsystem for Linux)</li>
+</ul>
+<aside class="notes">
+<p>https://zero-to-nix.com/start/install/</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="try-before-you-buy" class="slide level2">
+<h2>Try Before You Buy!</h2>
+<aside class="notes">
+<p>pokemonsay: https://github.com/HRKings/pokemonsay-newgenerations</p>
+<p>run this on thelio (navigate to /mnt/media_drive2/quickemu_vm/quickemu_new_version)</p>
+<p>quickemu –vm ubuntu-server-24.04.conf –display none</p>
+<p>Then in the same host (thelio) connect to the VM via ssh:</p>
+<p>ssh ubuntunix</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
 <section id="nix-store" class="slide level2">
 <h2>Nix Store</h2>
 <p>Like a graph database * Entries in store are like nodes, relationships among them are edges</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># edges pointing to R</span></span>
-<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix-store</span> <span class="at">--query</span> <span class="at">--references</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span></span>
-<span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># edges pointing from R (i.e. packages)</span></span>
-<span id="cb1-5"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix-store</span> <span class="at">--query</span> <span class="at">--referers</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span></span>
-<span id="cb1-6"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a aria-hidden="true" tabindex="-1"></a><span class="co"># transitive closure (recursive dependencies)</span></span>
-<span id="cb1-8"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix-store</span> <span class="at">--query</span> <span class="at">--requisites</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span></span>
-<span id="cb1-9"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a aria-hidden="true" tabindex="-1"></a><span class="co"># graph</span></span>
-<span id="cb1-11"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix-store</span> <span class="at">--query</span> <span class="at">--graph</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span> <span class="kw">|</span> <span class="ex">dot</span> <span class="at">-Tsvg</span> <span class="at">-o</span> scratch/r.svg</span>
-<span id="cb1-12"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a aria-hidden="true" tabindex="-1"></a><span class="co"># nix-visualize</span></span>
-<span id="cb1-14"><a aria-hidden="true" tabindex="-1"></a><span class="co"># https://github.com/craigmbooth/nix-visualize</span></span>
-<span id="cb1-15"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix</span> run github:craigmbooth/nix-visualize <span class="at">--</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span> <span class="at">-s</span> R <span class="at">-o</span> scratch/r_graph_depviz.png</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># edges pointing to R</span></span>
+<span id="cb2-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix-store</span> <span class="at">--query</span> <span class="at">--references</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span></span>
+<span id="cb2-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># edges pointing from R (i.e. packages)</span></span>
+<span id="cb2-5"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix-store</span> <span class="at">--query</span> <span class="at">--referers</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span></span>
+<span id="cb2-6"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a aria-hidden="true" tabindex="-1"></a><span class="co"># transitive closure (recursive dependencies)</span></span>
+<span id="cb2-8"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix-store</span> <span class="at">--query</span> <span class="at">--requisites</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span></span>
+<span id="cb2-9"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a aria-hidden="true" tabindex="-1"></a><span class="co"># graph</span></span>
+<span id="cb2-11"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix-store</span> <span class="at">--query</span> <span class="at">--graph</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span> <span class="kw">|</span> <span class="ex">dot</span> <span class="at">-Tsvg</span> <span class="at">-o</span> scratch/r.svg</span>
+<span id="cb2-12"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a aria-hidden="true" tabindex="-1"></a><span class="co"># nix-visualize</span></span>
+<span id="cb2-14"><a aria-hidden="true" tabindex="-1"></a><span class="co"># https://github.com/craigmbooth/nix-visualize</span></span>
+<span id="cb2-15"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix</span> run github:craigmbooth/nix-visualize <span class="at">--</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span> <span class="at">-s</span> R <span class="at">-o</span> scratch/r_graph_depviz.png</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="r-graph" class="slide level2">
 <h2>R Graph</h2>
@@ -426,11 +508,11 @@ Eric Nantz
 </ul>
 
 
-</section>
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-
+<p><a href="https://rpodcast.github.io/nix-shinyconf2025/">rpodcast.github.io/nix-shinyconf2025/</a></p>
 </div>
 </div></div>
 
@@ -441,6 +523,7 @@ Eric Nantz
   <script src="site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-codewindow/codewindow.js"></script>
   <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -483,7 +566,7 @@ Eric Nantz
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: 'c/t',
+        slideNumber: false,
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',
@@ -633,7 +716,7 @@ Eric Nantz
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealCodewindow, QuartoSupport,
 
           RevealMath,
           RevealNotes,

@@ -17,8 +17,8 @@
     "objectID": "index.html#its-never-just-shiny",
     "href": "index.html#its-never-just-shiny",
     "title": "In the Nix of Time",
-    "section": "It’s Never Just Shiny",
-    "text": "It’s Never Just Shiny\n\n\n\nApplication requires additional R packages\nExternal services or APIs\nAdditional languages (Python, JavaScript)\nCustom software used as backend for packages\nDeployment platforms\n\n\nAdd pic here"
+    "section": "It’s Never Just Shiny …",
+    "text": "It’s Never Just Shiny …\n\n\n\nAdditional R packages\nExternal services or APIs\nOther languages (Python, JavaScript)\nSoftware dependencies for packages\nDeployment platforms"
   },
   {
     "objectID": "index.html#managing-dependencies",
@@ -45,15 +45,36 @@
     "objectID": "index.html#brunoslide-id",
     "href": "index.html#brunoslide-id",
     "title": "In the Nix of Time",
-    "section": "",
-    "text": "July 2023 https://brodrigues.co/posts/2023-07-13-nix_for_r_part1.html\nCovered practically his entire series on Nix with R Weekly\n\n2024-W15 (Part 11) - highlight\n2024-W40 (rix on CRAN) - highlight\n2023-W32 (part 3)\n2023-W29 (part 1) - highlight https://brodrigues.co/posts/2023-07-13-nix_for_r_part1.html\n2024-W02 (part 8)\n2023-W30 (part 2)\n2024-W10 (part 10)\n2023-W43 (part 7)\n2023-W33 (YouTube video introducing Nix)\n2024-W36 (part 12)\n2023-W38 (part 5)\n2024-W20 (Reproducible Nix workshop)\n2024-W06 (part 9)\n2023-W34 (part 4)\n2024-W28 (YouTube video introducing Rix)\n2023-W35 (YouTube video running old project with old R and old packages)\n2023-W47 (YouTube video GH actions with Nix)"
+    "section": "Worlds Collide",
+    "text": "Worlds Collide\n\n\n\n\nBruno Rodriguez\n\n\n\n\n\n\n\n\n\n\n\nJuly 2023 https://brodrigues.co/posts/2023-07-13-nix_for_r_part1.html\nCovered practically his entire series on Nix with R Weekly\n\n2024-W15 (Part 11) - highlight\n2024-W40 (rix on CRAN) - highlight\n2023-W32 (part 3)\n2023-W29 (part 1) - highlight https://brodrigues.co/posts/2023-07-13-nix_for_r_part1.html\n2024-W02 (part 8)\n2023-W30 (part 2)\n2024-W10 (part 10)\n2023-W43 (part 7)\n2023-W33 (YouTube video introducing Nix)\n2024-W36 (part 12)\n2023-W38 (part 5)\n2024-W20 (Reproducible Nix workshop)\n2024-W06 (part 9)\n2023-W34 (part 4)\n2024-W28 (YouTube video introducing Rix)\n2023-W35 (YouTube video running old project with old R and old packages)\n2023-W47 (YouTube video GH actions with Nix)"
   },
   {
-    "objectID": "index.html#what-is-nix",
-    "href": "index.html#what-is-nix",
+    "objectID": "index.html#nixhighlevel-id",
+    "href": "index.html#nixhighlevel-id",
     "title": "In the Nix of Time",
-    "section": "What is Nix?",
-    "text": "What is Nix?\n\nAt heart: Nix is a package manager\nKey features\n\nAll build files collected in the Nix store (like graph database)\nImmutable, read-only file system\nNix is also a functional language used to describe derivations\nSimilar to Git: Each path in the Nix store is a hash value based on all input information for that piece of software\nDerivations give build instructions for items in Nix store\n\nEverything is explicit, transparent\n\n\n\nPurely functional language (uses immutability of the nix store)\nLazy language, dynamically typed\nMention history of Nix (founder, their dissertation)"
+    "section": "",
+    "text": "Package Manager\nDomain-Specific Language\nImmutable Installation\nSandboxed Environments"
+  },
+  {
+    "objectID": "index.html#a-package-manager",
+    "href": "index.html#a-package-manager",
+    "title": "In the Nix of Time",
+    "section": "A Package Manager",
+    "text": "A Package Manager\n\n\n\nCollection of over 120,000 recipes of apps, utilities, languages, etc.\nPackage repository nixpkgs available on GitHub\n\nAbility to pin repository to specific point in time\n\nRequired system dependencies are automatically installed"
+  },
+  {
+    "objectID": "index.html#installing-nix",
+    "href": "index.html#installing-nix",
+    "title": "In the Nix of Time",
+    "section": "Installing Nix",
+    "text": "Installing Nix\nEasy Mode: Determinant Systems Nix Installer\n\ncurl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | \\\nsh -s -- install\n\n\nSupported platforms: Linux, Mac OS X, and Windows (via Windows Subsystem for Linux)\n\n\nhttps://zero-to-nix.com/start/install/"
+  },
+  {
+    "objectID": "index.html#try-before-you-buy",
+    "href": "index.html#try-before-you-buy",
+    "title": "In the Nix of Time",
+    "section": "Try Before You Buy!",
+    "text": "Try Before You Buy!\n\npokemonsay: https://github.com/HRKings/pokemonsay-newgenerations\nrun this on thelio (navigate to /mnt/media_drive2/quickemu_vm/quickemu_new_version)\nquickemu –vm ubuntu-server-24.04.conf –display none\nThen in the same host (thelio) connect to the VM via ssh:\nssh ubuntunix"
   },
   {
     "objectID": "index.html#nix-store",
