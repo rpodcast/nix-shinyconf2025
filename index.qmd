@@ -1,38 +1,46 @@
 ---
 title: "In the Nix of Time"
 subtitle: "A new approach to Shiny development & deployment with Nix and {rix}"
+title-slide-attributes: 
+  data-background-image: assets/img/futuristic_city.jpg
+  data-background-size: contain
+  data-background-opacity: "0.4"
+  data-background-color: black
 format:
-  clean-revealjs: 
+  revealjs: 
     link-external-newwindow: true
     menu: true
     theme: [default, custom.scss]
     code-line-numbers: false
+    footer: "[rpodcast.github.io/nix-shinyconf2025/](https://rpodcast.github.io/nix-shinyconf2025/)"
 author: 
   - name: Eric Nantz
     affiliation:
       - Statistician / Developer / Podcaster
       - Eli Lilly & Company
-      - "{{< fa brands bluesky >}} @rpodcast.bsky.social"
-      - "{{< fa brands mastodon >}} @rpodcast@podcastindex.social"
-      - "{{< fa brands linkedin >}} @eric-nantz"
+      - "{{< fa brands bluesky >}} [@rpodcast.bsky.social](https://bsky.app/profile/rpodcast.bsky.social)"
+      - "{{< fa brands mastodon >}} [@rpodcast@podcastindex.social](https://podcastindex.social/@rpodcast)"
+      - "{{< fa brands linkedin >}} [@eric-nantz](https://www.linkedin.com/in/eric-nantz-6621617/)"
 date: April 11, 2025
+revealjs-plugins:
+  - codewindow
 ---
 
-## It's Never Just Shiny
+## It's Never Just Shiny ...
 
 :::: {.columns}
 
 ::: {.column width="60%"}
-* Application requires additional R packages
+* Additional R packages
 * External services or APIs
-* Additional languages (Python, JavaScript)
-* Custom software used as backend for packages
+* Other languages (Python, JavaScript)
+* Software dependencies for packages 
 * Deployment platforms
 :::
 
 ::: {.column width="40%"}
 
-Add pic here
+![](assets/img/warehouse.jpg)
 
 :::
 
@@ -40,23 +48,11 @@ Add pic here
 
 ## Managing Dependencies
 
-:::: {.columns}
+::: {.r-stack}
+![](assets/img/renv.svg){.fragment .absolute top=100 left=0 width="40%"}
 
-::: {.column}
-
-![](assets/img/renv.svg)
-
+![](assets/img/docker-logo-blue.svg){.fragment .absolute top=250 right=50 width="50%"}
 :::
-
-::: {.column}
-
-![](assets/img/docker-logo-blue.svg)
-
-:::
-
-::::
-
-
 
 ## Slide 2
 
@@ -65,6 +61,7 @@ Add pic here
 ## {#lupslide-id data-menu-title="Linux Friends"}
 
 ::: {.r-stack}
+
 ![](assets/img/jb_collage.png){.fragment}
 
 ![](assets/img/martin_wimpress.png){.fragment}
@@ -82,19 +79,32 @@ Right half: Martin Wimpress, show screengrab of youtube livestream
 * Aired April 6, 2023
 :::
 
-## {#brunoslide-id data-menu-title="Bruno Discovers Nix"}
+## Worlds Collide {#brunoslide-id data-menu-title="Bruno Discovers Nix"}
 
 ::: {.r-stack}
 
-![](assets/img/bruno.jpg){.fragment .absolute top=200 left=0}
+::: {.fragment}
+![](assets/img/bruno.jpg){.absolute top=200 left=0 width="30%"}
 
-![](assets/img/bruno_nix_part1.png){.fragment .absolute top=500 left=0}
+::: {.absolute top=530 left=0}
+Bruno Rodriguez
+:::
 
-![](assets/img/bruno_series_all.png){.fragment .absolute top=100 right=0}
+:::
+
+::: {.fragment}
+![](assets/img/rweekly_issue_top.png){.absolute top=40 right=10}
+
+![](assets/img/rweekly_issue_bottom.png){.absolute top=230 right=10}
+:::
+
+![](assets/img/bruno_series_all.png){.fragment .absolute top=60 right=0}
 :::
 
 
 ::: {.notes}
+![](assets/img/bruno_nix_part1.png){.fragment .absolute top=500 left=0}
+
 * July 2023 https://brodrigues.co/posts/2023-07-13-nix_for_r_part1.html
 * Covered practically his entire series on Nix with R Weekly
     * 2024-W15 (Part 11) - highlight
@@ -116,8 +126,25 @@ Right half: Martin Wimpress, show screengrab of youtube livestream
     * 2023-W47 (YouTube video GH actions with Nix)
 :::
 
-## What is Nix?
+# 🤔 What is Nix?
 
+## {#nixhighlevel-id data-menu-title="Nix High-Level Overview"}
+
+::: {.r-fit-text}
+Package Manager
+
+Domain-Specific Language
+
+Immutable Installation
+
+Sandboxed Environments
+:::
+
+# 🤔 Again, what is Nix?
+
+
+
+::: {.notes}
 * At heart: Nix is a package manager
 * Key features
     + All build files collected in the **Nix store** (like graph database)
@@ -126,12 +153,69 @@ Right half: Martin Wimpress, show screengrab of youtube livestream
     * Similar to Git: Each path in the Nix store is a hash value based on all input information for that piece of software
     * Derivations give build instructions for items in Nix store
 * Everything is explicit, transparent
-
-::: {.notes}
 * Purely functional language (uses immutability of the nix store)
 * Lazy language, dynamically typed
 * Mention history of Nix (founder, their dissertation)
 :::
+
+## A Package Manager
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+* Collection of over 120,000 **recipes** of apps, utilities, languages, etc.
+* Package repository `nixpkgs` available on [GitHub]()
+    * Ability to pin repository to specific point in time
+* Required system dependencies are automatically installed
+
+:::
+
+::: {.column width="50%"}
+
+![](assets/img/nix_packages_searchbar.png)
+
+![](assets/img/nix_package_R_entry.png)
+
+:::
+
+::::
+
+## Installing Nix
+
+**Easy Mode**: [Determinant Systems Nix Installer](https://zero-to-nix.com/start/install/)
+
+::: {.codewindow}
+```bash
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | \
+sh -s -- install
+```
+:::
+
+* Supported platforms: Linux, Mac OS X, and Windows (via Windows Subsystem for Linux)
+
+::: {.notes}
+
+https://zero-to-nix.com/start/install/
+
+:::
+
+## Try Before You Buy!
+
+::: {.notes}
+pokemonsay: https://github.com/HRKings/pokemonsay-newgenerations 
+
+run this on thelio (navigate to /mnt/media_drive2/quickemu_vm/quickemu_new_version)
+
+quickemu --vm ubuntu-server-24.04.conf --display none
+
+Then in the same host (thelio) connect to the VM via ssh:
+
+ssh ubuntunix
+
+
+:::
+
 
 ## Nix Store
 

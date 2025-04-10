@@ -10,7 +10,7 @@ The Shiny framework has brought tremendous innovation to data science for R and 
 * Virtual machines used in demonstrations created with [Quickemu](https://github.com/quickemu-project/quickemu) - Quickly create and run optimised Windows, MacOS and Linux virtual machines
 * Eelco Dolstra: The Evolution of Nix (SoN2022 Public Lecture Series) https://www.youtube.com/watch?v=h8hWX_aGGDc
 * Eelco Dolstra: The Nix Roadmap (NicCon 2018) https://www.youtube.com/watch?v=8M6yvJC00J4 
-
+* Zerto to Nix https://zero-to-nix.com/ 
 
 ### Image Credits
 
@@ -18,3 +18,5 @@ The Shiny framework has brought tremendous innovation to data science for R and 
 * Jupiter Broadcasting logs and hosts: https://jupiterbroadcasting.com
 * Bruno Rodriguez: https://brodrigues.co
 * Martin Wimpress: https://wimpysworld.com
+* Futuristic City: https://www.flickr.com/photos/torley/33517915763 
+* Warehouse: https://www.rawpixel.com/image/3306102/free-photo-image-delivery-cargo-warehouse 
