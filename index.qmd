@@ -18,15 +18,51 @@ author:
 date: April 11, 2025
 ---
 
-## Slide 1
+## It's Never Just Shiny
 
-Hello world!
+:::: {.columns}
+
+::: {.column width="60%"}
+* Application requires additional R packages
+* External services or APIs
+* Additional languages (Python, JavaScript)
+* Custom software used as backend for packages
+* Deployment platforms
+:::
+
+::: {.column width="40%"}
+
+Add pic here
+
+:::
+
+::::
+
+## Managing Dependencies
+
+:::: {.columns}
+
+::: {.column}
+
+![](assets/img/renv.svg)
+
+:::
+
+::: {.column}
+
+![](assets/img/docker-logo-blue.svg)
+
+:::
+
+::::
+
+
 
 ## Slide 2
 
 ![](https://vhs.charm.sh/vhs-6j0gMkv7ymBp3UfiZHik8w.gif)
 
-## Linux Friends
+## {#lupslide-id data-menu-title="Linux Friends"}
 
 ::: {.r-stack}
 ![](assets/img/jb_collage.png){.fragment}
@@ -46,7 +82,7 @@ Right half: Martin Wimpress, show screengrab of youtube livestream
 * Aired April 6, 2023
 :::
 
-## Two Worlds Collide
+## {#brunoslide-id data-menu-title="Bruno Discovers Nix"}
 
 ::: {.r-stack}
 
@@ -114,11 +150,15 @@ nix-store --query --requisites $(which R)
 
 # graph
 nix-store --query --graph $(which R) | dot -Tsvg -o scratch/r.svg
+
+# nix-visualize
+# https://github.com/craigmbooth/nix-visualize
+nix run github:craigmbooth/nix-visualize -- $(which R) -s R -o scratch/r_graph_depviz.png
 ```
 
 ## R Graph
 
-![](assets/img/r.svg)
+![](assets/img/r_graph_depviz.svg)
 
 
 ## History of Nix
