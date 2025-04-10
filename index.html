@@ -223,16 +223,36 @@ Eric Nantz
 
   <p class="date">April 11, 2025</p>
 </section>
-<section id="slide-1" class="slide level2">
-<h2>Slide 1</h2>
-<p>Hello world!</p>
+<section id="its-never-just-shiny" class="slide level2">
+<h2>It’s Never Just Shiny</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li>Application requires additional R packages</li>
+<li>External services or APIs</li>
+<li>Additional languages (Python, JavaScript)</li>
+<li>Custom software used as backend for packages</li>
+<li>Deployment platforms</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p>Add pic here</p>
+</div></div>
+</section>
+<section id="managing-dependencies" class="slide level2">
+<h2>Managing Dependencies</h2>
+<div class="columns">
+<div class="column">
+<p><img data-src="assets/img/renv.svg"></p>
+</div><div class="column">
+<p><img data-src="assets/img/docker-logo-blue.svg"></p>
+</div></div>
 </section>
 <section id="slide-2" class="slide level2">
 <h2>Slide 2</h2>
 
 <img data-src="https://vhs.charm.sh/vhs-6j0gMkv7ymBp3UfiZHik8w.gif" class="r-stretch"></section>
-<section id="linux-friends" class="slide level2">
-<h2>Linux Friends</h2>
+<section id="lupslide-id" class="slide level2" data-menu-title="Linux Friends">
+<h2></h2>
 <div class="r-stack">
 <p><img data-src="assets/img/jb_collage.png" class="fragment"></p>
 <p><img data-src="assets/img/martin_wimpress.png" class="fragment"></p>
@@ -253,8 +273,8 @@ Eric Nantz
           display:block!important;
       }</style></aside>
 </section>
-<section id="two-worlds-collide" class="slide level2">
-<h2>Two Worlds Collide</h2>
+<section id="brunoslide-id" class="slide level2" data-menu-title="Bruno Discovers Nix">
+<h2></h2>
 <div class="r-stack">
 <p><img data-src="assets/img/bruno.jpg" class="fragment absolute" style="top: 200px; left: 0px; "></p>
 <p><img data-src="assets/img/bruno_nix_part1.png" class="fragment absolute" style="top: 500px; left: 0px; "></p>
@@ -341,12 +361,16 @@ Eric Nantz
 <span id="cb1-8"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix-store</span> <span class="at">--query</span> <span class="at">--requisites</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span></span>
 <span id="cb1-9"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-10"><a aria-hidden="true" tabindex="-1"></a><span class="co"># graph</span></span>
-<span id="cb1-11"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix-store</span> <span class="at">--query</span> <span class="at">--graph</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span> <span class="kw">|</span> <span class="ex">dot</span> <span class="at">-Tsvg</span> <span class="at">-o</span> scratch/r.svg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-11"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix-store</span> <span class="at">--query</span> <span class="at">--graph</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span> <span class="kw">|</span> <span class="ex">dot</span> <span class="at">-Tsvg</span> <span class="at">-o</span> scratch/r.svg</span>
+<span id="cb1-12"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a aria-hidden="true" tabindex="-1"></a><span class="co"># nix-visualize</span></span>
+<span id="cb1-14"><a aria-hidden="true" tabindex="-1"></a><span class="co"># https://github.com/craigmbooth/nix-visualize</span></span>
+<span id="cb1-15"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix</span> run github:craigmbooth/nix-visualize <span class="at">--</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span> <span class="at">-s</span> R <span class="at">-o</span> scratch/r_graph_depviz.png</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="r-graph" class="slide level2">
 <h2>R Graph</h2>
 
-<img data-src="assets/img/r.svg" class="r-stretch"></section>
+<img data-src="assets/img/r_graph_depviz.svg" class="r-stretch"></section>
 <section id="history-of-nix" class="slide level2">
 <h2>History of Nix</h2>
 <aside class="notes">

@@ -14,11 +14,18 @@
     "text": "Link: https://notes.jupiterbroadcasting.com/linux-unplugged/2022/episode-451/\nWhy they were interested:\n\nSolves big problems\nThey forget how they set up various utilities, accumulating technical debt\nConfiguration file documents everything\nReproduces system exactly as you had it\nNix package manager can be installed without trying NixOS\nNix is a functional language for describing the system instructions\nBuild packages in a reproducible fashion, sophisticated way for dependency management\nSwitching between different paradigms like desktop environments is feasible, you can test changes out\nNix store lets you safely have these multiple packages installed without colliding with each other\nNix packages: A giant expression in the nix language, these describe how to build packages\nPulls down binary versions of packages by default\nNix vs containers: Not using containers as much as before\nCan install multiple software\nNix has the package tree definitions on local system, then evaluates the packages it needs, each package has a set of instructions\nUses hashes to determine if a user has a binary hash, if they don’t have it, then it is downloaded and built\nYou have the ability to patch software locally, like mumble\nRollback feature\n\nAssorted resources\n\nhttps://shopify.engineering/what-is-nix\n\n\n\n\n\n\nLink: https://notes.jupiterbroadcasting.com/linux-unplugged/2022/episode-455/\nWimpy’s take back then\n\nNixOS is the best expression of where the linux desktop and intersection of containter type technology exists\n\nPoetry2Nix for Python projects: Takes a python project, then wraps it with Nix https://github.com/nix-community/poetry2nix\nAlex: Elegant way to configure system, he had a similar feeling about Docker years ago"
   },
   {
-    "objectID": "index.html#slide-1",
-    "href": "index.html#slide-1",
+    "objectID": "index.html#its-never-just-shiny",
+    "href": "index.html#its-never-just-shiny",
     "title": "In the Nix of Time",
-    "section": "Slide 1",
-    "text": "Slide 1\nHello world!"
+    "section": "It’s Never Just Shiny",
+    "text": "It’s Never Just Shiny\n\n\n\nApplication requires additional R packages\nExternal services or APIs\nAdditional languages (Python, JavaScript)\nCustom software used as backend for packages\nDeployment platforms\n\n\nAdd pic here"
+  },
+  {
+    "objectID": "index.html#managing-dependencies",
+    "href": "index.html#managing-dependencies",
+    "title": "In the Nix of Time",
+    "section": "Managing Dependencies",
+    "text": "Managing Dependencies"
   },
   {
     "objectID": "index.html#slide-2",
@@ -28,18 +35,18 @@
     "text": "Slide 2"
   },
   {
-    "objectID": "index.html#linux-friends",
-    "href": "index.html#linux-friends",
+    "objectID": "index.html#lupslide-id",
+    "href": "index.html#lupslide-id",
     "title": "In the Nix of Time",
-    "section": "Linux Friends",
-    "text": "Linux Friends\n\n\n\n\n\n\nLeft half: JB with their logo and headshots, then show screen grabs of each Nix focused episode player * Nix challenge launched in March 2022\nRight half: Martin Wimpress, show screengrab of youtube livestream * Martin Wimpress joins Determinant Systems in 2023 * Livestream with his public exploration of Nix https://www.youtube.com/watch?v=v9GM8k9Aa7k * Aired April 6, 2023"
+    "section": "",
+    "text": "Left half: JB with their logo and headshots, then show screen grabs of each Nix focused episode player * Nix challenge launched in March 2022\nRight half: Martin Wimpress, show screengrab of youtube livestream * Martin Wimpress joins Determinant Systems in 2023 * Livestream with his public exploration of Nix https://www.youtube.com/watch?v=v9GM8k9Aa7k * Aired April 6, 2023"
   },
   {
-    "objectID": "index.html#two-worlds-collide",
-    "href": "index.html#two-worlds-collide",
+    "objectID": "index.html#brunoslide-id",
+    "href": "index.html#brunoslide-id",
     "title": "In the Nix of Time",
-    "section": "Two Worlds Collide",
-    "text": "Two Worlds Collide\n\n\n\n\n\n\n\nJuly 2023 https://brodrigues.co/posts/2023-07-13-nix_for_r_part1.html\nCovered practically his entire series on Nix with R Weekly\n\n2024-W15 (Part 11) - highlight\n2024-W40 (rix on CRAN) - highlight\n2023-W32 (part 3)\n2023-W29 (part 1) - highlight https://brodrigues.co/posts/2023-07-13-nix_for_r_part1.html\n2024-W02 (part 8)\n2023-W30 (part 2)\n2024-W10 (part 10)\n2023-W43 (part 7)\n2023-W33 (YouTube video introducing Nix)\n2024-W36 (part 12)\n2023-W38 (part 5)\n2024-W20 (Reproducible Nix workshop)\n2024-W06 (part 9)\n2023-W34 (part 4)\n2024-W28 (YouTube video introducing Rix)\n2023-W35 (YouTube video running old project with old R and old packages)\n2023-W47 (YouTube video GH actions with Nix)"
+    "section": "",
+    "text": "July 2023 https://brodrigues.co/posts/2023-07-13-nix_for_r_part1.html\nCovered practically his entire series on Nix with R Weekly\n\n2024-W15 (Part 11) - highlight\n2024-W40 (rix on CRAN) - highlight\n2023-W32 (part 3)\n2023-W29 (part 1) - highlight https://brodrigues.co/posts/2023-07-13-nix_for_r_part1.html\n2024-W02 (part 8)\n2023-W30 (part 2)\n2024-W10 (part 10)\n2023-W43 (part 7)\n2023-W33 (YouTube video introducing Nix)\n2024-W36 (part 12)\n2023-W38 (part 5)\n2024-W20 (Reproducible Nix workshop)\n2024-W06 (part 9)\n2023-W34 (part 4)\n2024-W28 (YouTube video introducing Rix)\n2023-W35 (YouTube video running old project with old R and old packages)\n2023-W47 (YouTube video GH actions with Nix)"
   },
   {
     "objectID": "index.html#what-is-nix",
@@ -53,7 +60,7 @@
     "href": "index.html#nix-store",
     "title": "In the Nix of Time",
     "section": "Nix Store",
-    "text": "Nix Store\nLike a graph database * Entries in store are like nodes, relationships among them are edges\n# edges pointing to R\nnix-store --query --references $(which R)\n\n# edges pointing from R (i.e. packages)\nnix-store --query --referers $(which R)\n\n# transitive closure (recursive dependencies)\nnix-store --query --requisites $(which R)\n\n# graph\nnix-store --query --graph $(which R) | dot -Tsvg -o scratch/r.svg"
+    "text": "Nix Store\nLike a graph database * Entries in store are like nodes, relationships among them are edges\n# edges pointing to R\nnix-store --query --references $(which R)\n\n# edges pointing from R (i.e. packages)\nnix-store --query --referers $(which R)\n\n# transitive closure (recursive dependencies)\nnix-store --query --requisites $(which R)\n\n# graph\nnix-store --query --graph $(which R) | dot -Tsvg -o scratch/r.svg\n\n# nix-visualize\n# https://github.com/craigmbooth/nix-visualize\nnix run github:craigmbooth/nix-visualize -- $(which R) -s R -o scratch/r_graph_depviz.png"
   },
   {
     "objectID": "index.html#r-graph",
