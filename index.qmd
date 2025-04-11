@@ -54,6 +54,8 @@ revealjs-plugins:
 ![](assets/img/docker-logo-blue.svg){.fragment .absolute top=250 right=50 width="50%"}
 :::
 
+## {background-image="assets/img/shinydevseries_devcontainers.png" background-size="contain"}
+
 ## {#lupslide-id data-menu-title="Linux Friends"}
 
 ::: {.r-stack}
@@ -156,7 +158,7 @@ Sandboxed Environments
 * Mention history of Nix (founder, their dissertation)
 :::
 
-## A Package Manager
+## Nix - A Package Manager
 
 :::: {.columns}
 
@@ -268,8 +270,7 @@ ssh ubuntunix
 
 :::
 
-
-## Nix Store
+::: {.notes}
 
 Like a graph database
 * Entries in store are like nodes, relationships among them are edges
@@ -291,6 +292,9 @@ nix-store --query --graph $(which R) | dot -Tsvg -o scratch/r.svg
 # https://github.com/craigmbooth/nix-visualize
 nix run github:craigmbooth/nix-visualize -- $(which R) -s R -o scratch/r_graph_depviz.png
 ```
+
+:::
+
 
 ## Enter `{rix}`
 
@@ -352,32 +356,104 @@ rix(
 {{< include assets/code_examples/default.nix >}}
 ```
 
+### Bootstrap Demo
+
+{{< video assets/img/rix_demo_prebaked.mp4 >}}
+
 :::
 
 
+# Realistic Use Case
 
-## Mythbusting
+## R Weekly Schedule Administration
 
-* Myth 1: Nix is an entire operating system
-    * That is NixOS
-    * You can use Nix on most Linux distributions, Mac OS X, Windows via WSL
-* Not a full container, not a full VM
+:::: {.columns}
+
+::: {.column width="50%"}
+
+* Rotating schedule of weekly issue curation
+* Communication on Slack
+* Schedule tracked via Google Spreadsheet
+* Real-life happens:
+   * Curator may have conflicts and need to switch slots
 
 
-## Advantages over containers
+:::
 
-* Less overhead
-* Still feels like native use of OS
-* No need for volume mounts
+::: {.column width="50%"}
 
-## A Few Papercuts remain
+![](assets/img/rweekly_issue_archive_list.png)
+:::
 
-* Compiles from source for package versions not available in a binary cache
-* Disk space usage could be an issue on lower-spec hardware
-* Debugging Nix errors can be on the cryptic side
+::::
 
-## Why for Shiny?
+## New Approach: Requirements
 
-* It's never just Shiny ...
-* Manage dependencies not just at the R level
-* Support multi-lingual projects
+* Centralized source of truth for schedule accessible by multiple interfaces
+* Easy-to-access calender view refreshed regularly online
+* Shiny application with secured login for each curator to decline or propose to switch
+* Automatic notifications to curators on Slack channel after each schedule change
+
+## {background-image="assets/img/cal_admin_diagram.svg" background-size="contain"}
+
+## {background-image="assets/img/picard_why.jpg" background-size="contain"}
+
+## {background-image="assets/img/overengineer.jpg" background-size="contain"}
+
+## Reflections (Good)
+
+✅ Feels like native environments on host system
+
+✅ One source of truth for dev environment
+
+✅ Reproducible installations across different operating systems (and even architectures)
+
+✅ Intelligent use of caching
+
+## Reflections (Caution)
+
+❗️ Immutable file system conflicts with "temp" file creation
+
+❗️ Steep learning curve for Nix language
+
+❗️ HD space could be maxed out on lower-spec systems
+
+❗️ Early days for Nix & Data Science
+
+## Eric's Additional Nix/Rix Explorations
+
+* R Weekly Curation Calendar ([Quarto Dashboard](https://rweekly.github.io/rweekly-calendar/), [GitHub](https://github.com/rweekly/rweekly-calendar) )
+* R Submissions Pilot 4 (Docker Container) ([GitHub](https://github.com/RConsortium/submissions-pilot4-container/tree/main))
+* Dataset-JSON Viewer: Fork to create web-assembly version ([App](https://rpodcast.github.io/Dataset-JSON-hackathon/), [GitHub](https://github.com/rpodcast/Dataset-JSON-hackathon))
+* This presentation ([GitHub](https://github.com/rpodcast/nix-shinyconf2025))
+
+## Level-up your Nix Knowledge
+
+* [`{rix}`](https://docs.ropensci.org/rix/): Reproducible environments with Nix
+* [Zero to Nix](https://zero-to-nix.com/): Your guide to learning Nix and flakes
+* [Bruno Rodriguez](https://brodrigues.co/): Reproducible data science with Nix series
+* [What is Nix](https://shopify.engineering/what-is-nix#) (Shopify blog)
+* [What is Nix and Why You Should Use It](https://serokell.io/blog/what-is-nix) (Alexander Bantyev)
+
+## Thank You!
+
+:::: {.columns}
+
+::: {.column width=50%}
+
+{{< fa solid microphone size=xl >}} [R-Podcast](https://r-podcast.org)
+
+{{< fa solid microphone size=xl >}} [R Weekly Highlights](https://serve.podhome.fm/r-weekly-highlights)
+
+{{< fa solid display >}} [Shiny Developer Series](https://shinydevseries.com)
+
+{{< fa brands mastodon size=xl >}} [\@rpodcast](https://podcastindex.org/@rpodcast)
+
+{{< fa brands linkedin size=xl >}} [eric-nantz](https://www.linkedin.com/in/eric-nantz-6621617/)
+
+{{< fa brands github size=xl >}} [rpodcast](https://github.com/rpodcast/)
+:::
+
+::: {.column width=50%}
+
+![](assets/img/rpodcast-hexagon.png)
