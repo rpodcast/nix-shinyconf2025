@@ -248,6 +248,9 @@ Eric Nantz
 <p><img data-src="assets/img/docker-logo-blue.svg" class="fragment absolute" style="top: 250px; right: 50px; width: 50%; "></p>
 </div>
 </section>
+<section id="section" class="slide level2" data-background-image="assets/img/shinydevseries_devcontainers.png" data-background-size="contain">
+<h2></h2>
+</section>
 <section id="lupslide-id" class="slide level2" data-menu-title="Linux Friends">
 <h2></h2>
 <div class="r-stack">
@@ -369,8 +372,8 @@ Eric Nantz
           display:block!important;
       }</style></aside>
 </section>
-<section id="a-package-manager" class="slide level2">
-<h2>A Package Manager</h2>
+<section id="nix---a-package-manager" class="slide level2">
+<h2>Nix - A Package Manager</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
@@ -473,9 +476,7 @@ Eric Nantz
 </div>
 </div>
 </div>
-</section>
-<section id="nix-store-1" class="slide level2">
-<h2>Nix Store</h2>
+<aside class="notes">
 <p>Like a graph database * Entries in store are like nodes, relationships among them are edges</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># edges pointing to R</span></span>
 <span id="cb4-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix-store</span> <span class="at">--query</span> <span class="at">--references</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span></span>
@@ -492,6 +493,17 @@ Eric Nantz
 <span id="cb4-13"><a aria-hidden="true" tabindex="-1"></a><span class="co"># nix-visualize</span></span>
 <span id="cb4-14"><a aria-hidden="true" tabindex="-1"></a><span class="co"># https://github.com/craigmbooth/nix-visualize</span></span>
 <span id="cb4-15"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix</span> run github:craigmbooth/nix-visualize <span class="at">--</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span> <span class="at">-s</span> R <span class="at">-o</span> scratch/r_graph_depviz.png</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="enter-rix" class="slide level2">
 <h2>Enter <code>{rix}</code></h2>
@@ -528,7 +540,7 @@ Eric Nantz
 <section id="rix-in-action" class="slide level2">
 <h2><code>rix</code> in Action</h2>
 <div class="panel-tabset">
-<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">rix</a></li><li><a href="#tabset-2-2">Nix Config</a></li></ul>
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">rix</a></li><li><a href="#tabset-2-2">Nix Config</a></li><li><a href="#tabset-2-3">Bootstrap Demo</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1">
 <div class="sourceCode" id="cb5" data-code-line-numbers="|4|5|6|7-13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">library</span>(rix)</span>
@@ -623,45 +635,100 @@ in
   }
 </code></pre>
 </div>
+<div id="tabset-2-3">
+<video id="video_shortcode_videojs_video2" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="assets/img/rix_demo_prebaked.mp4"></video>
 </div>
 </div>
+</div>
+</section></section>
+<section>
+<section id="realistic-use-case" class="title-slide slide level1 center">
+<h1>Realistic Use Case</h1>
+
 </section>
-<section id="mythbusting" class="slide level2">
-<h2>Mythbusting</h2>
+<section id="r-weekly-schedule-administration" class="slide level2">
+<h2>R Weekly Schedule Administration</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
 <ul>
-<li>Myth 1: Nix is an entire operating system
+<li>Rotating schedule of weekly issue curation</li>
+<li>Communication on Slack</li>
+<li>Schedule tracked via Google Spreadsheet</li>
+<li>Real-life happens:
 <ul>
-<li>That is NixOS</li>
-<li>You can use Nix on most Linux distributions, Mac OS X, Windows via WSL</li>
+<li>Curator may have conflicts and need to switch slots</li>
 </ul></li>
-<li>Not a full container, not a full VM</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="assets/img/rweekly_issue_archive_list.png"></p>
+</div></div>
+</section>
+<section id="new-approach-requirements" class="slide level2">
+<h2>New Approach: Requirements</h2>
+<ul>
+<li>Centralized source of truth for schedule accessible by multiple interfaces</li>
+<li>Easy-to-access calender view refreshed regularly online</li>
+<li>Shiny application with secured login for each curator to decline or propose to switch</li>
+<li>Automatic notifications to curators on Slack channel after each schedule change</li>
 </ul>
 </section>
-<section id="advantages-over-containers" class="slide level2">
-<h2>Advantages over containers</h2>
+<section id="section-1" class="slide level2" data-background-image="assets/img/cal_admin_diagram.svg" data-background-size="contain">
+<h2></h2>
+</section>
+<section id="section-2" class="slide level2" data-background-image="assets/img/picard_why.jpg" data-background-size="contain">
+<h2></h2>
+</section>
+<section id="section-3" class="slide level2" data-background-image="assets/img/overengineer.jpg" data-background-size="contain">
+<h2></h2>
+</section>
+<section id="reflections-good" class="slide level2">
+<h2>Reflections (Good)</h2>
+<p>✅ Feels like native environments on host system</p>
+<p>✅ One source of truth for dev environment</p>
+<p>✅ Reproducible installations across different operating systems (and even architectures)</p>
+<p>✅ Intelligent use of caching</p>
+</section>
+<section id="reflections-caution" class="slide level2">
+<h2>Reflections (Caution)</h2>
+<p>❗️ Immutable file system conflicts with “temp” file creation</p>
+<p>❗️ Steep learning curve for Nix language</p>
+<p>❗️ HD space could be maxed out on lower-spec systems</p>
+<p>❗️ Early days for Nix &amp; Data Science</p>
+</section>
+<section id="erics-additional-nixrix-explorations" class="slide level2">
+<h2>Eric’s Additional Nix/Rix Explorations</h2>
 <ul>
-<li>Less overhead</li>
-<li>Still feels like native use of OS</li>
-<li>No need for volume mounts</li>
+<li>R Weekly Curation Calendar (<a href="https://rweekly.github.io/rweekly-calendar/">Quarto Dashboard</a>, <a href="https://github.com/rweekly/rweekly-calendar">GitHub</a> )</li>
+<li>R Submissions Pilot 4 (Docker Container) (<a href="https://github.com/RConsortium/submissions-pilot4-container/tree/main">GitHub</a>)</li>
+<li>Dataset-JSON Viewer: Fork to create web-assembly version (<a href="https://rpodcast.github.io/Dataset-JSON-hackathon/">App</a>, <a href="https://github.com/rpodcast/Dataset-JSON-hackathon">GitHub</a>)</li>
+<li>This presentation (<a href="https://github.com/rpodcast/nix-shinyconf2025">GitHub</a>)</li>
 </ul>
 </section>
-<section id="a-few-papercuts-remain" class="slide level2">
-<h2>A Few Papercuts remain</h2>
+<section id="level-up-your-nix-knowledge" class="slide level2">
+<h2>Level-up your Nix Knowledge</h2>
 <ul>
-<li>Compiles from source for package versions not available in a binary cache</li>
-<li>Disk space usage could be an issue on lower-spec hardware</li>
-<li>Debugging Nix errors can be on the cryptic side</li>
+<li><a href="https://docs.ropensci.org/rix/"><code>{rix}</code></a>: Reproducible environments with Nix</li>
+<li><a href="https://zero-to-nix.com/">Zero to Nix</a>: Your guide to learning Nix and flakes</li>
+<li><a href="https://brodrigues.co/">Bruno Rodriguez</a>: Reproducible data science with Nix series</li>
+<li><a href="https://shopify.engineering/what-is-nix#">What is Nix</a> (Shopify blog)</li>
+<li><a href="https://serokell.io/blog/what-is-nix">What is Nix and Why You Should Use It</a> (Alexander Bantyev)</li>
 </ul>
 </section>
-<section id="why-for-shiny" class="slide level2">
-<h2>Why for Shiny?</h2>
-<ul>
-<li>It’s never just Shiny …</li>
-<li>Manage dependencies not just at the R level</li>
-<li>Support multi-lingual projects</li>
-</ul>
+<section id="thank-you" class="slide level2">
+<h2>Thank You!</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><i class="fa-solid fa-microphone fa-xl" aria-label="microphone"></i> <a href="https://r-podcast.org">R-Podcast</a></p>
+<p><i class="fa-solid fa-microphone fa-xl" aria-label="microphone"></i> <a href="https://serve.podhome.fm/r-weekly-highlights">R Weekly Highlights</a></p>
+<p><i class="fa-solid fa-display" aria-label="display"></i> <a href="https://shinydevseries.com">Shiny Developer Series</a></p>
+<p><i class="fa-brands fa-mastodon fa-xl" aria-label="mastodon"></i> <a href="https://podcastindex.org/@rpodcast">@rpodcast</a></p>
+<p><i class="fa-brands fa-linkedin fa-xl" aria-label="linkedin"></i> <a href="https://www.linkedin.com/in/eric-nantz-6621617/">eric-nantz</a></p>
+<p><i class="fa-brands fa-github fa-xl" aria-label="github"></i> <a href="https://github.com/rpodcast/">rpodcast</a></p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="assets/img/rpodcast-hexagon.png"></p>
 
 
+</div></div>
 </section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
@@ -1070,6 +1137,7 @@ in
     });
     </script>
     <script>videojs(video_shortcode_videojs_video1);</script>
+    <script>videojs(video_shortcode_videojs_video2);</script>
     
 
 </body></html>

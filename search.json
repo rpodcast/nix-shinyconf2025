@@ -49,11 +49,11 @@
     "text": "Package Manager\nDomain-Specific Language\nImmutable Installation\nSandboxed Environments"
   },
   {
-    "objectID": "index.html#a-package-manager",
-    "href": "index.html#a-package-manager",
+    "objectID": "index.html#nix---a-package-manager",
+    "href": "index.html#nix---a-package-manager",
     "title": "In the Nix of Time",
-    "section": "A Package Manager",
-    "text": "A Package Manager\n\n\n\nCollection of over 120,000 recipes of apps, utilities, languages, etc.\nPackage repository nixpkgs available on GitHub\n\nAbility to pin repository to specific point in time\n\nRequired system dependencies are automatically installed"
+    "section": "Nix - A Package Manager",
+    "text": "Nix - A Package Manager\n\n\n\nCollection of over 120,000 recipes of apps, utilities, languages, etc.\nPackage repository nixpkgs available on GitHub\n\nAbility to pin repository to specific point in time\n\nRequired system dependencies are automatically installed"
   },
   {
     "objectID": "index.html#installing-nix",
@@ -74,14 +74,7 @@
     "href": "index.html#under-the-nix-hood",
     "title": "In the Nix of Time",
     "section": "Under the Nix Hood",
-    "text": "Under the Nix Hood\n\nNix StoreDerivationDependenciesNetwork\n\n\n\n# which pokemonsay\n/nix/store/xq1cs65ic3m0qdpwcjvdgd7yfq8c3ssv-pokemonsay-1.0.0/bin/pokemonsay\n\n\n\n\n\n\n\n# nix-store --query --requisites $(which pokemonsay)\n/nix/store/m2047a1xwgblgkrnbxz0yilkaqfrbf2b-xgcc-14-20241116-libgcc\n/nix/store/nj19yxkqf0iqjqn4x6dbglsvqk5bgsbs-libunistring-1.3\n/nix/store/y2xxdhhjy2l5mgpm3d0rw2wxmpd61my4-libidn2-2.3.7\n/nix/store/rmy663w9p7xb202rcln4jjzmvivznmz8-glibc-2.40-66\n/nix/store/pn0rk0wsmkjazbz380y8xzb99n8sr07g-attr-2.5.2\n/nix/store/4izi23kn57b3cw47jddzq14wcv01b5y5-acl-2.3.2\n/nix/store/58br4vk3q5akf4g8lx0pqzfhn47k3j8d-bash-5.2p37\n/nix/store/ll9dm3r87v4r46a0km0zck4968m60vys-libxcrypt-4.4.38\n/nix/store/xijpnhg8mg0g4lahwrxdwylpcq7249gc-zlib-1.3.1\n/nix/store/id29wx2vp10d5xi6wzsykd4rb9ssaikx-gcc-14-20241116-libgcc\n/nix/store/ik84lbv5jvjm1xxvdl8mhg52ry3xycvm-gcc-14-20241116-lib\n/nix/store/rlpanzl29s3gv3wgs5720q04rbgysl8a-gmp-with-cxx-6.3.0\n/nix/store/yh6qg1nsi5h2xblcr67030pz58fsaxx3-coreutils-9.6\n/nix/store/8v0r6qxs5cps7cgcjp215895wja6k0by-perl-5.40.0\n/nix/store/ixskg19qvf8gfwbdlajc4498c1km1jyf-cowsay-3.8.4\n/nix/store/xq5f95pp297afc2xjgrmhmf9w631qp7m-findutils-4.10.0\n/nix/store/xq1cs65ic3m0qdpwcjvdgd7yfq8c3ssv-pokemonsay-1.0.0"
-  },
-  {
-    "objectID": "index.html#nix-store-1",
-    "href": "index.html#nix-store-1",
-    "title": "In the Nix of Time",
-    "section": "Nix Store",
-    "text": "Nix Store\nLike a graph database * Entries in store are like nodes, relationships among them are edges\n# edges pointing to R\nnix-store --query --references $(which R)\n\n# edges pointing from R (i.e. packages)\nnix-store --query --referers $(which R)\n\n# transitive closure (recursive dependencies)\nnix-store --query --requisites $(which R)\n\n# graph\nnix-store --query --graph $(which R) | dot -Tsvg -o scratch/r.svg\n\n# nix-visualize\n# https://github.com/craigmbooth/nix-visualize\nnix run github:craigmbooth/nix-visualize -- $(which R) -s R -o scratch/r_graph_depviz.png"
+    "text": "Under the Nix Hood\n\nNix StoreDerivationDependenciesNetwork\n\n\n\n# which pokemonsay\n/nix/store/xq1cs65ic3m0qdpwcjvdgd7yfq8c3ssv-pokemonsay-1.0.0/bin/pokemonsay\n\n\n\n\n\n\n\n# nix-store --query --requisites $(which pokemonsay)\n/nix/store/m2047a1xwgblgkrnbxz0yilkaqfrbf2b-xgcc-14-20241116-libgcc\n/nix/store/nj19yxkqf0iqjqn4x6dbglsvqk5bgsbs-libunistring-1.3\n/nix/store/y2xxdhhjy2l5mgpm3d0rw2wxmpd61my4-libidn2-2.3.7\n/nix/store/rmy663w9p7xb202rcln4jjzmvivznmz8-glibc-2.40-66\n/nix/store/pn0rk0wsmkjazbz380y8xzb99n8sr07g-attr-2.5.2\n/nix/store/4izi23kn57b3cw47jddzq14wcv01b5y5-acl-2.3.2\n/nix/store/58br4vk3q5akf4g8lx0pqzfhn47k3j8d-bash-5.2p37\n/nix/store/ll9dm3r87v4r46a0km0zck4968m60vys-libxcrypt-4.4.38\n/nix/store/xijpnhg8mg0g4lahwrxdwylpcq7249gc-zlib-1.3.1\n/nix/store/id29wx2vp10d5xi6wzsykd4rb9ssaikx-gcc-14-20241116-libgcc\n/nix/store/ik84lbv5jvjm1xxvdl8mhg52ry3xycvm-gcc-14-20241116-lib\n/nix/store/rlpanzl29s3gv3wgs5720q04rbgysl8a-gmp-with-cxx-6.3.0\n/nix/store/yh6qg1nsi5h2xblcr67030pz58fsaxx3-coreutils-9.6\n/nix/store/8v0r6qxs5cps7cgcjp215895wja6k0by-perl-5.40.0\n/nix/store/ixskg19qvf8gfwbdlajc4498c1km1jyf-cowsay-3.8.4\n/nix/store/xq5f95pp297afc2xjgrmhmf9w631qp7m-findutils-4.10.0\n/nix/store/xq1cs65ic3m0qdpwcjvdgd7yfq8c3ssv-pokemonsay-1.0.0\n\n\n\n\n\n\n\n\nLike a graph database * Entries in store are like nodes, relationships among them are edges\n# edges pointing to R\nnix-store --query --references $(which R)\n\n# edges pointing from R (i.e. packages)\nnix-store --query --referers $(which R)\n\n# transitive closure (recursive dependencies)\nnix-store --query --requisites $(which R)\n\n# graph\nnix-store --query --graph $(which R) | dot -Tsvg -o scratch/r.svg\n\n# nix-visualize\n# https://github.com/craigmbooth/nix-visualize\nnix run github:craigmbooth/nix-visualize -- $(which R) -s R -o scratch/r_graph_depviz.png"
   },
   {
     "objectID": "index.html#enter-rix",
@@ -95,34 +88,55 @@
     "href": "index.html#rix-in-action",
     "title": "In the Nix of Time",
     "section": "rix in Action",
-    "text": "rix in Action\n\nrixNix Config\n\n\nlibrary(rix)\n\nrix(\n  r_ver = \"4.4.3\",\n  r_pkgs = c(\"shiny\"),\n  system_pkgs = c(\"pokemonsay\"),\n  git_pkgs = list(\n    list(\n      package_name = \"doltr\",\n      repo_url = \"https://github.com/ecohealthalliance/doltr/\",\n      commit = \"ffb5bc68003e83ebdb9f352654bab2515ca6bf3a\"\n    )\n  ),\n  project_path = \".\",\n  overwrite = TRUE\n)\n\n\n# This file was generated by the {rix} R package v0.15.8 on 2025-04-10\n# with following call:\n# &gt;rix(r_ver = \"4.4.3\",\n#  &gt; r_pkgs = c(\"shiny\"),\n#  &gt; system_pkgs = c(\"pokemonsay\"),\n#  &gt; git_pkgs = list(list(package_name = \"doltr\",\n#  &gt; repo_url = \"https://github.com/ecohealthalliance/doltr/\",\n#  &gt; commit = \"ffb5bc68003e83ebdb9f352654bab2515ca6bf3a\")),\n#  &gt; project_path = \".\",\n#  &gt; overwrite = TRUE)\n# It uses the `rstats-on-nix` fork of `nixpkgs` which provides improved\n# compatibility with older R versions and R packages for Linux/WSL and\n# Apple Silicon computers.\n# Report any issues to https://github.com/ropensci/rix\nlet\n pkgs = import (fetchTarball \"https://github.com/rstats-on-nix/nixpkgs/archive/2025-04-07.tar.gz\") {};\n \n  rpkgs = builtins.attrValues {\n    inherit (pkgs.rPackages) \n      shiny;\n  };\n \n    doltr = (pkgs.rPackages.buildRPackage {\n      name = \"doltr\";\n      src = pkgs.fetchgit {\n        url = \"https://github.com/ecohealthalliance/doltr/\";\n        rev = \"ffb5bc68003e83ebdb9f352654bab2515ca6bf3a\";\n        sha256 = \"sha256-jO+6VsY4Dmk25uk1ytz0qAlH0Vt9gTm34o6ymYW2PLg=\";\n      };\n      propagatedBuildInputs = builtins.attrValues {\n        inherit (pkgs.rPackages) \n          blob\n          cli\n          DBI\n          dbplyr\n          dbx\n          dplyr\n          httpuv\n          jsonlite\n          processx\n          ps\n          rlang\n          RMariaDB\n          R_utils\n          rstudioapi;\n      };\n    });\n     \n  system_packages = builtins.attrValues {\n    inherit (pkgs) \n      glibcLocales\n      nix\n      pokemonsay\n      R;\n  };\n  \n  shell = pkgs.mkShell {\n    LOCALE_ARCHIVE = if pkgs.system == \"x86_64-linux\" then \"${pkgs.glibcLocales}/lib/locale/locale-archive\" else \"\";\n    LANG = \"en_US.UTF-8\";\n   LC_ALL = \"en_US.UTF-8\";\n   LC_TIME = \"en_US.UTF-8\";\n   LC_MONETARY = \"en_US.UTF-8\";\n   LC_PAPER = \"en_US.UTF-8\";\n   LC_MEASUREMENT = \"en_US.UTF-8\";\n\n    buildInputs = [ doltr rpkgs   system_packages   ];\n    \n  }; \nin\n  {\n    inherit pkgs shell;\n  }"
+    "text": "rix in Action\n\nrixNix ConfigBootstrap Demo\n\n\nlibrary(rix)\n\nrix(\n  r_ver = \"4.4.3\",\n  r_pkgs = c(\"shiny\"),\n  system_pkgs = c(\"pokemonsay\"),\n  git_pkgs = list(\n    list(\n      package_name = \"doltr\",\n      repo_url = \"https://github.com/ecohealthalliance/doltr/\",\n      commit = \"ffb5bc68003e83ebdb9f352654bab2515ca6bf3a\"\n    )\n  ),\n  project_path = \".\",\n  overwrite = TRUE\n)\n\n\n# This file was generated by the {rix} R package v0.15.8 on 2025-04-10\n# with following call:\n# &gt;rix(r_ver = \"4.4.3\",\n#  &gt; r_pkgs = c(\"shiny\"),\n#  &gt; system_pkgs = c(\"pokemonsay\"),\n#  &gt; git_pkgs = list(list(package_name = \"doltr\",\n#  &gt; repo_url = \"https://github.com/ecohealthalliance/doltr/\",\n#  &gt; commit = \"ffb5bc68003e83ebdb9f352654bab2515ca6bf3a\")),\n#  &gt; project_path = \".\",\n#  &gt; overwrite = TRUE)\n# It uses the `rstats-on-nix` fork of `nixpkgs` which provides improved\n# compatibility with older R versions and R packages for Linux/WSL and\n# Apple Silicon computers.\n# Report any issues to https://github.com/ropensci/rix\nlet\n pkgs = import (fetchTarball \"https://github.com/rstats-on-nix/nixpkgs/archive/2025-04-07.tar.gz\") {};\n \n  rpkgs = builtins.attrValues {\n    inherit (pkgs.rPackages) \n      shiny;\n  };\n \n    doltr = (pkgs.rPackages.buildRPackage {\n      name = \"doltr\";\n      src = pkgs.fetchgit {\n        url = \"https://github.com/ecohealthalliance/doltr/\";\n        rev = \"ffb5bc68003e83ebdb9f352654bab2515ca6bf3a\";\n        sha256 = \"sha256-jO+6VsY4Dmk25uk1ytz0qAlH0Vt9gTm34o6ymYW2PLg=\";\n      };\n      propagatedBuildInputs = builtins.attrValues {\n        inherit (pkgs.rPackages) \n          blob\n          cli\n          DBI\n          dbplyr\n          dbx\n          dplyr\n          httpuv\n          jsonlite\n          processx\n          ps\n          rlang\n          RMariaDB\n          R_utils\n          rstudioapi;\n      };\n    });\n     \n  system_packages = builtins.attrValues {\n    inherit (pkgs) \n      glibcLocales\n      nix\n      pokemonsay\n      R;\n  };\n  \n  shell = pkgs.mkShell {\n    LOCALE_ARCHIVE = if pkgs.system == \"x86_64-linux\" then \"${pkgs.glibcLocales}/lib/locale/locale-archive\" else \"\";\n    LANG = \"en_US.UTF-8\";\n   LC_ALL = \"en_US.UTF-8\";\n   LC_TIME = \"en_US.UTF-8\";\n   LC_MONETARY = \"en_US.UTF-8\";\n   LC_PAPER = \"en_US.UTF-8\";\n   LC_MEASUREMENT = \"en_US.UTF-8\";\n\n    buildInputs = [ doltr rpkgs   system_packages   ];\n    \n  }; \nin\n  {\n    inherit pkgs shell;\n  }"
   },
   {
-    "objectID": "index.html#mythbusting",
-    "href": "index.html#mythbusting",
+    "objectID": "index.html#r-weekly-schedule-administration",
+    "href": "index.html#r-weekly-schedule-administration",
     "title": "In the Nix of Time",
-    "section": "Mythbusting",
-    "text": "Mythbusting\n\nMyth 1: Nix is an entire operating system\n\nThat is NixOS\nYou can use Nix on most Linux distributions, Mac OS X, Windows via WSL\n\nNot a full container, not a full VM"
+    "section": "R Weekly Schedule Administration",
+    "text": "R Weekly Schedule Administration\n\n\n\nRotating schedule of weekly issue curation\nCommunication on Slack\nSchedule tracked via Google Spreadsheet\nReal-life happens:\n\nCurator may have conflicts and need to switch slots"
   },
   {
-    "objectID": "index.html#advantages-over-containers",
-    "href": "index.html#advantages-over-containers",
+    "objectID": "index.html#new-approach-requirements",
+    "href": "index.html#new-approach-requirements",
     "title": "In the Nix of Time",
-    "section": "Advantages over containers",
-    "text": "Advantages over containers\n\nLess overhead\nStill feels like native use of OS\nNo need for volume mounts"
+    "section": "New Approach: Requirements",
+    "text": "New Approach: Requirements\n\nCentralized source of truth for schedule accessible by multiple interfaces\nEasy-to-access calender view refreshed regularly online\nShiny application with secured login for each curator to decline or propose to switch\nAutomatic notifications to curators on Slack channel after each schedule change"
   },
   {
-    "objectID": "index.html#a-few-papercuts-remain",
-    "href": "index.html#a-few-papercuts-remain",
+    "objectID": "index.html#reflections-good",
+    "href": "index.html#reflections-good",
     "title": "In the Nix of Time",
-    "section": "A Few Papercuts remain",
-    "text": "A Few Papercuts remain\n\nCompiles from source for package versions not available in a binary cache\nDisk space usage could be an issue on lower-spec hardware\nDebugging Nix errors can be on the cryptic side"
+    "section": "Reflections (Good)",
+    "text": "Reflections (Good)\n✅ Feels like native environments on host system\n✅ One source of truth for dev environment\n✅ Reproducible installations across different operating systems (and even architectures)\n✅ Intelligent use of caching"
   },
   {
-    "objectID": "index.html#why-for-shiny",
-    "href": "index.html#why-for-shiny",
+    "objectID": "index.html#reflections-caution",
+    "href": "index.html#reflections-caution",
     "title": "In the Nix of Time",
-    "section": "Why for Shiny?",
-    "text": "Why for Shiny?\n\nIt’s never just Shiny …\nManage dependencies not just at the R level\nSupport multi-lingual projects"
+    "section": "Reflections (Caution)",
+    "text": "Reflections (Caution)\n❗️ Immutable file system conflicts with “temp” file creation\n❗️ Steep learning curve for Nix language\n❗️ HD space could be maxed out on lower-spec systems\n❗️ Early days for Nix & Data Science"
+  },
+  {
+    "objectID": "index.html#erics-additional-nixrix-explorations",
+    "href": "index.html#erics-additional-nixrix-explorations",
+    "title": "In the Nix of Time",
+    "section": "Eric’s Additional Nix/Rix Explorations",
+    "text": "Eric’s Additional Nix/Rix Explorations\n\nR Weekly Curation Calendar (Quarto Dashboard, GitHub )\nR Submissions Pilot 4 (Docker Container) (GitHub)\nDataset-JSON Viewer: Fork to create web-assembly version (App, GitHub)\nThis presentation (GitHub)"
+  },
+  {
+    "objectID": "index.html#level-up-your-nix-knowledge",
+    "href": "index.html#level-up-your-nix-knowledge",
+    "title": "In the Nix of Time",
+    "section": "Level-up your Nix Knowledge",
+    "text": "Level-up your Nix Knowledge\n\n{rix}: Reproducible environments with Nix\nZero to Nix: Your guide to learning Nix and flakes\nBruno Rodriguez: Reproducible data science with Nix series\nWhat is Nix (Shopify blog)\nWhat is Nix and Why You Should Use It (Alexander Bantyev)"
+  },
+  {
+    "objectID": "index.html#thank-you",
+    "href": "index.html#thank-you",
+    "title": "In the Nix of Time",
+    "section": "Thank You!",
+    "text": "Thank You!\n\n\n R-Podcast\n R Weekly Highlights\n Shiny Developer Series\n @rpodcast\n eric-nantz\n rpodcast"
   }
 ]
