@@ -7,6 +7,8 @@
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/quarto-contrib/videojs/video.min.js"></script>
+<link href="site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.6.43">
@@ -246,10 +248,6 @@ Eric Nantz
 <p><img data-src="assets/img/docker-logo-blue.svg" class="fragment absolute" style="top: 250px; right: 50px; width: 50%; "></p>
 </div>
 </section>
-<section id="slide-2" class="slide level2">
-<h2>Slide 2</h2>
-
-<img data-src="https://vhs.charm.sh/vhs-6j0gMkv7ymBp3UfiZHik8w.gif" class="r-stretch"></section>
 <section id="lupslide-id" class="slide level2" data-menu-title="Linux Friends">
 <h2></h2>
 <div class="r-stack">
@@ -343,6 +341,8 @@ Eric Nantz
 <h1>🤔 Again, what is Nix?</h1>
 <aside class="notes">
 <ul>
+<li>Eelco Dolstra came up with the idea of Nix in his dissertation (A tool called Maak)</li>
+<li>NixOS in 2006 - Started as an experiment to verify build purity</li>
 <li>At heart: Nix is a package manager</li>
 <li>Key features
 <ul>
@@ -412,7 +412,9 @@ Eric Nantz
 </section>
 <section id="try-before-you-buy" class="slide level2">
 <h2>Try Before You Buy!</h2>
+<video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="assets/img/pokemonsay.mp4"></video>
 <aside class="notes">
+<p><img data-src="assets/img/pokemonsay.gif"></p>
 <p>pokemonsay: https://github.com/HRKings/pokemonsay-newgenerations</p>
 <p>run this on thelio (navigate to /mnt/media_drive2/quickemu_vm/quickemu_new_version)</p>
 <p>quickemu –vm ubuntu-server-24.04.conf –display none</p>
@@ -430,35 +432,86 @@ Eric Nantz
           display:block!important;
       }</style></aside>
 </section>
-<section id="nix-store" class="slide level2">
+<section id="under-the-nix-hood" class="slide level2">
+<h2>Under the Nix Hood</h2>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Nix Store</a></li><li><a href="#tabset-1-2">Derivation</a></li><li><a href="#tabset-1-3">Dependencies</a></li><li><a href="#tabset-1-4">Network</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<div class="codewindow">
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># which pokemonsay</span></span>
+<span id="cb2-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/xq1cs65ic3m0qdpwcjvdgd7yfq8c3ssv-pokemonsay-1.0.0/bin/pokemonsay</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-1-2">
+<iframe width="980" height="500" src="https://github.com/NixOS/nixpkgs/blob/nixos-24.11/pkgs/by-name/po/pokemonsay/package.nix" title="pokemonsay"></iframe>
+</div>
+<div id="tabset-1-3">
+<div class="codewindow">
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># nix-store --query --requisites $(which pokemonsay)</span></span>
+<span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/m2047a1xwgblgkrnbxz0yilkaqfrbf2b-xgcc-14-20241116-libgcc</span></span>
+<span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/nj19yxkqf0iqjqn4x6dbglsvqk5bgsbs-libunistring-1.3</span></span>
+<span id="cb3-4"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/y2xxdhhjy2l5mgpm3d0rw2wxmpd61my4-libidn2-2.3.7</span></span>
+<span id="cb3-5"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/rmy663w9p7xb202rcln4jjzmvivznmz8-glibc-2.40-66</span></span>
+<span id="cb3-6"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/pn0rk0wsmkjazbz380y8xzb99n8sr07g-attr-2.5.2</span></span>
+<span id="cb3-7"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/4izi23kn57b3cw47jddzq14wcv01b5y5-acl-2.3.2</span></span>
+<span id="cb3-8"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/58br4vk3q5akf4g8lx0pqzfhn47k3j8d-bash-5.2p37</span></span>
+<span id="cb3-9"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/ll9dm3r87v4r46a0km0zck4968m60vys-libxcrypt-4.4.38</span></span>
+<span id="cb3-10"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/xijpnhg8mg0g4lahwrxdwylpcq7249gc-zlib-1.3.1</span></span>
+<span id="cb3-11"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/id29wx2vp10d5xi6wzsykd4rb9ssaikx-gcc-14-20241116-libgcc</span></span>
+<span id="cb3-12"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/ik84lbv5jvjm1xxvdl8mhg52ry3xycvm-gcc-14-20241116-lib</span></span>
+<span id="cb3-13"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/rlpanzl29s3gv3wgs5720q04rbgysl8a-gmp-with-cxx-6.3.0</span></span>
+<span id="cb3-14"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/yh6qg1nsi5h2xblcr67030pz58fsaxx3-coreutils-9.6</span></span>
+<span id="cb3-15"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/8v0r6qxs5cps7cgcjp215895wja6k0by-perl-5.40.0</span></span>
+<span id="cb3-16"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/ixskg19qvf8gfwbdlajc4498c1km1jyf-cowsay-3.8.4</span></span>
+<span id="cb3-17"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/xq5f95pp297afc2xjgrmhmf9w631qp7m-findutils-4.10.0</span></span>
+<span id="cb3-18"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/xq1cs65ic3m0qdpwcjvdgd7yfq8c3ssv-pokemonsay-1.0.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-1-4">
+<p><img data-src="assets/img/pokemonsay_query_graph.svg" style="width:60.0%"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="nix-store-1" class="slide level2">
 <h2>Nix Store</h2>
 <p>Like a graph database * Entries in store are like nodes, relationships among them are edges</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># edges pointing to R</span></span>
-<span id="cb2-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix-store</span> <span class="at">--query</span> <span class="at">--references</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span></span>
-<span id="cb2-3"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># edges pointing from R (i.e. packages)</span></span>
-<span id="cb2-5"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix-store</span> <span class="at">--query</span> <span class="at">--referers</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span></span>
-<span id="cb2-6"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a aria-hidden="true" tabindex="-1"></a><span class="co"># transitive closure (recursive dependencies)</span></span>
-<span id="cb2-8"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix-store</span> <span class="at">--query</span> <span class="at">--requisites</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span></span>
-<span id="cb2-9"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a aria-hidden="true" tabindex="-1"></a><span class="co"># graph</span></span>
-<span id="cb2-11"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix-store</span> <span class="at">--query</span> <span class="at">--graph</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span> <span class="kw">|</span> <span class="ex">dot</span> <span class="at">-Tsvg</span> <span class="at">-o</span> scratch/r.svg</span>
-<span id="cb2-12"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a aria-hidden="true" tabindex="-1"></a><span class="co"># nix-visualize</span></span>
-<span id="cb2-14"><a aria-hidden="true" tabindex="-1"></a><span class="co"># https://github.com/craigmbooth/nix-visualize</span></span>
-<span id="cb2-15"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix</span> run github:craigmbooth/nix-visualize <span class="at">--</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span> <span class="at">-s</span> R <span class="at">-o</span> scratch/r_graph_depviz.png</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># edges pointing to R</span></span>
+<span id="cb4-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix-store</span> <span class="at">--query</span> <span class="at">--references</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span></span>
+<span id="cb4-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># edges pointing from R (i.e. packages)</span></span>
+<span id="cb4-5"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix-store</span> <span class="at">--query</span> <span class="at">--referers</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span></span>
+<span id="cb4-6"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a aria-hidden="true" tabindex="-1"></a><span class="co"># transitive closure (recursive dependencies)</span></span>
+<span id="cb4-8"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix-store</span> <span class="at">--query</span> <span class="at">--requisites</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span></span>
+<span id="cb4-9"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a aria-hidden="true" tabindex="-1"></a><span class="co"># graph</span></span>
+<span id="cb4-11"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix-store</span> <span class="at">--query</span> <span class="at">--graph</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span> <span class="kw">|</span> <span class="ex">dot</span> <span class="at">-Tsvg</span> <span class="at">-o</span> scratch/r.svg</span>
+<span id="cb4-12"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a aria-hidden="true" tabindex="-1"></a><span class="co"># nix-visualize</span></span>
+<span id="cb4-14"><a aria-hidden="true" tabindex="-1"></a><span class="co"># https://github.com/craigmbooth/nix-visualize</span></span>
+<span id="cb4-15"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix</span> run github:craigmbooth/nix-visualize <span class="at">--</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span> <span class="at">-s</span> R <span class="at">-o</span> scratch/r_graph_depviz.png</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="r-graph" class="slide level2">
-<h2>R Graph</h2>
-
-<img data-src="assets/img/r_graph_depviz.svg" class="r-stretch"></section>
-<section id="history-of-nix" class="slide level2">
-<h2>History of Nix</h2>
-<aside class="notes">
+<section id="enter-rix" class="slide level2">
+<h2>Enter <code>{rix}</code></h2>
+<div class="columns">
+<div class="column" style="width:60%;">
 <ul>
-<li>Eelco Dolstra came up with the idea of Nix in his dissertation (A tool called Maak)</li>
-<li>NixOS in 2006 - Started as an experiment to verify build purity</li>
+<li>Project-specific <strong>sandbox</strong> environments powered by Nix</li>
+<li>Intuitive functions to create Nix expressions, <strong>all within R</strong></li>
+<li>Access to (nearly) all CRAN and Bioconductor packages</li>
+<li>Install packages from GitHub</li>
+<li>Convert <code>renv.lock</code> file to Nix expressions!</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><a href="https://docs.ropensci.org/rix/"><img data-src="assets/img/rix.png"></a></p>
+</div></div>
+<aside class="notes">
+<p>Authors:</p>
+<ul>
+<li>Bruno Rodriguez</li>
+<li>Philipp Baumann</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -471,6 +524,107 @@ Eric Nantz
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section>
+<section id="rix-in-action" class="slide level2">
+<h2><code>rix</code> in Action</h2>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">rix</a></li><li><a href="#tabset-2-2">Nix Config</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
+<div class="sourceCode" id="cb5" data-code-line-numbers="|4|5|6|7-13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">library</span>(rix)</span>
+<span id="cb5-2"><a></a></span>
+<span id="cb5-3"><a></a><span class="fu">rix</span>(</span>
+<span id="cb5-4"><a></a>  <span class="at">r_ver =</span> <span class="st">"4.4.3"</span>,</span>
+<span id="cb5-5"><a></a>  <span class="at">r_pkgs =</span> <span class="fu">c</span>(<span class="st">"shiny"</span>),</span>
+<span id="cb5-6"><a></a>  <span class="at">system_pkgs =</span> <span class="fu">c</span>(<span class="st">"pokemonsay"</span>),</span>
+<span id="cb5-7"><a></a>  <span class="at">git_pkgs =</span> <span class="fu">list</span>(</span>
+<span id="cb5-8"><a></a>    <span class="fu">list</span>(</span>
+<span id="cb5-9"><a></a>      <span class="at">package_name =</span> <span class="st">"doltr"</span>,</span>
+<span id="cb5-10"><a></a>      <span class="at">repo_url =</span> <span class="st">"https://github.com/ecohealthalliance/doltr/"</span>,</span>
+<span id="cb5-11"><a></a>      <span class="at">commit =</span> <span class="st">"ffb5bc68003e83ebdb9f352654bab2515ca6bf3a"</span></span>
+<span id="cb5-12"><a></a>    )</span>
+<span id="cb5-13"><a></a>  ),</span>
+<span id="cb5-14"><a></a>  <span class="at">project_path =</span> <span class="st">"."</span>,</span>
+<span id="cb5-15"><a></a>  <span class="at">overwrite =</span> <span class="cn">TRUE</span></span>
+<span id="cb5-16"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-2-2">
+<pre><code># This file was generated by the {rix} R package v0.15.8 on 2025-04-10
+# with following call:
+# &gt;rix(r_ver = "4.4.3",
+#  &gt; r_pkgs = c("shiny"),
+#  &gt; system_pkgs = c("pokemonsay"),
+#  &gt; git_pkgs = list(list(package_name = "doltr",
+#  &gt; repo_url = "https://github.com/ecohealthalliance/doltr/",
+#  &gt; commit = "ffb5bc68003e83ebdb9f352654bab2515ca6bf3a")),
+#  &gt; project_path = ".",
+#  &gt; overwrite = TRUE)
+# It uses the `rstats-on-nix` fork of `nixpkgs` which provides improved
+# compatibility with older R versions and R packages for Linux/WSL and
+# Apple Silicon computers.
+# Report any issues to https://github.com/ropensci/rix
+let
+ pkgs = import (fetchTarball "https://github.com/rstats-on-nix/nixpkgs/archive/2025-04-07.tar.gz") {};
+ 
+  rpkgs = builtins.attrValues {
+    inherit (pkgs.rPackages) 
+      shiny;
+  };
+ 
+    doltr = (pkgs.rPackages.buildRPackage {
+      name = "doltr";
+      src = pkgs.fetchgit {
+        url = "https://github.com/ecohealthalliance/doltr/";
+        rev = "ffb5bc68003e83ebdb9f352654bab2515ca6bf3a";
+        sha256 = "sha256-jO+6VsY4Dmk25uk1ytz0qAlH0Vt9gTm34o6ymYW2PLg=";
+      };
+      propagatedBuildInputs = builtins.attrValues {
+        inherit (pkgs.rPackages) 
+          blob
+          cli
+          DBI
+          dbplyr
+          dbx
+          dplyr
+          httpuv
+          jsonlite
+          processx
+          ps
+          rlang
+          RMariaDB
+          R_utils
+          rstudioapi;
+      };
+    });
+     
+  system_packages = builtins.attrValues {
+    inherit (pkgs) 
+      glibcLocales
+      nix
+      pokemonsay
+      R;
+  };
+  
+  shell = pkgs.mkShell {
+    LOCALE_ARCHIVE = if pkgs.system == "x86_64-linux" then "${pkgs.glibcLocales}/lib/locale/locale-archive" else "";
+    LANG = "en_US.UTF-8";
+   LC_ALL = "en_US.UTF-8";
+   LC_TIME = "en_US.UTF-8";
+   LC_MONETARY = "en_US.UTF-8";
+   LC_PAPER = "en_US.UTF-8";
+   LC_MEASUREMENT = "en_US.UTF-8";
+
+    buildInputs = [ doltr rpkgs   system_packages   ];
+    
+  }; 
+in
+  {
+    inherit pkgs shell;
+  }
+</code></pre>
+</div>
+</div>
+</div>
 </section>
 <section id="mythbusting" class="slide level2">
 <h2>Mythbusting</h2>
@@ -915,6 +1069,7 @@ Eric Nantz
       }
     });
     </script>
+    <script>videojs(video_shortcode_videojs_video1);</script>
     
 
 </body></html>
