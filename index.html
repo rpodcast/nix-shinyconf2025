@@ -447,28 +447,107 @@ Eric Nantz
 </div>
 </div>
 <div id="tabset-1-2">
-<iframe width="980" height="500" src="https://github.com/NixOS/nixpkgs/blob/nixos-24.11/pkgs/by-name/po/pokemonsay/package.nix" title="pokemonsay"></iframe>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># https://github.com/NixOS/nixpkgs/blob/nixos-24.11/pkgs/by-name/po/pokemonsay/package.nix</span></span>
+<span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a><span class="kw">{</span></span>
+<span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="ex">lib,</span></span>
+<span id="cb3-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="ex">stdenvNoCC,</span></span>
+<span id="cb3-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="ex">fetchFromGitHub,</span></span>
+<span id="cb3-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="ex">fetchpatch,</span></span>
+<span id="cb3-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="ex">cowsay,</span></span>
+<span id="cb3-8"><a aria-hidden="true" tabindex="-1"></a>  <span class="ex">coreutils,</span></span>
+<span id="cb3-9"><a aria-hidden="true" tabindex="-1"></a>  <span class="ex">findutils,</span></span>
+<span id="cb3-10"><a aria-hidden="true" tabindex="-1"></a><span class="ex">}:</span></span>
+<span id="cb3-11"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a aria-hidden="true" tabindex="-1"></a><span class="ex">stdenvNoCC.mkDerivation</span> rec {</span>
+<span id="cb3-13"><a aria-hidden="true" tabindex="-1"></a>  <span class="ex">pname</span> = <span class="st">"pokemonsay"</span><span class="kw">;</span></span>
+<span id="cb3-14"><a aria-hidden="true" tabindex="-1"></a>  <span class="ex">version</span> = <span class="st">"1.0.0"</span><span class="kw">;</span></span>
+<span id="cb3-15"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a aria-hidden="true" tabindex="-1"></a>  <span class="ex">src</span> = fetchFromGitHub {</span>
+<span id="cb3-17"><a aria-hidden="true" tabindex="-1"></a>    <span class="ex">owner</span> = <span class="st">"HRKings"</span><span class="kw">;</span></span>
+<span id="cb3-18"><a aria-hidden="true" tabindex="-1"></a>    <span class="ex">repo</span> = <span class="st">"pokemonsay-newgenerations"</span><span class="kw">;</span></span>
+<span id="cb3-19"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">rev</span> = <span class="st">"v</span><span class="va">${version}</span><span class="st">"</span><span class="kw">;</span></span>
+<span id="cb3-20"><a aria-hidden="true" tabindex="-1"></a>    <span class="bu">hash</span> = <span class="st">"sha256-IDTAZmOzkUg0kLUM0oWuVbi8EwE4sEpLWrNAtq/he+g="</span><span class="kw">;</span></span>
+<span id="cb3-21"><a aria-hidden="true" tabindex="-1"></a>  <span class="kw">};</span></span>
+<span id="cb3-22"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a aria-hidden="true" tabindex="-1"></a>  <span class="ex">patches</span> = [</span>
+<span id="cb3-24"><a aria-hidden="true" tabindex="-1"></a>    <span class="kw">(</span><span class="ex">fetchpatch</span> {</span>
+<span id="cb3-25"><a aria-hidden="true" tabindex="-1"></a>      <span class="co"># https://github.com/HRKings/pokemonsay-newgenerations/pull/5</span></span>
+<span id="cb3-26"><a aria-hidden="true" tabindex="-1"></a>      <span class="ex">name</span> = <span class="st">"word-wrap-fix.patch"</span><span class="kw">;</span></span>
+<span id="cb3-27"><a aria-hidden="true" tabindex="-1"></a>      <span class="ex">url</span> = <span class="st">"https://github.com/pbsds/pokemonsay-newgenerations/commit/7056d7ba689479a8e6c14ec000be1dfcd83afeb0.patch"</span><span class="kw">;</span></span>
+<span id="cb3-28"><a aria-hidden="true" tabindex="-1"></a>      <span class="bu">hash</span> = <span class="st">"sha256-aqUJkyJDWArLjChxLZ4BbC6XAB53LAqARzTvEAxrFCI="</span><span class="kw">;</span></span>
+<span id="cb3-29"><a aria-hidden="true" tabindex="-1"></a>    <span class="er">}</span><span class="kw">)</span></span>
+<span id="cb3-30"><a aria-hidden="true" tabindex="-1"></a>  <span class="ex">]</span><span class="kw">;</span></span>
+<span id="cb3-31"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-32"><a aria-hidden="true" tabindex="-1"></a>  <span class="ex">postPatch</span> = <span class="st">''</span></span>
+<span id="cb3-33"><a aria-hidden="true" tabindex="-1"></a>    <span class="ex">substituteInPlace</span> pokemonsay.sh <span class="dt">\</span></span>
+<span id="cb3-34"><a aria-hidden="true" tabindex="-1"></a>      <span class="at">--replace-fail</span> <span class="dt">\</span></span>
+<span id="cb3-35"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">'INSTALL_PATH=''${HOME}/.bin/pokemonsay'</span> <span class="dt">\</span></span>
+<span id="cb3-36"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">""</span> <span class="dt">\</span></span>
+<span id="cb3-37"><a aria-hidden="true" tabindex="-1"></a>      <span class="at">--replace-fail</span> <span class="dt">\</span></span>
+<span id="cb3-38"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">'POKEMON_PATH=''${INSTALL_PATH}/pokemons'</span> <span class="dt">\</span></span>
+<span id="cb3-39"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">'POKEMON_PATH=${placeholder "out"}/share/pokemonsay'</span> <span class="dt">\</span></span>
+<span id="cb3-40"><a aria-hidden="true" tabindex="-1"></a>      <span class="at">--replace-fail</span> <span class="dt">\</span></span>
+<span id="cb3-41"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">'$(find '</span> <span class="dt">\</span></span>
+<span id="cb3-42"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">'$(${findutils}/bin/find '</span> <span class="dt">\</span></span>
+<span id="cb3-43"><a aria-hidden="true" tabindex="-1"></a>      <span class="at">--replace-fail</span> <span class="dt">\</span></span>
+<span id="cb3-44"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">'$(basename '</span> <span class="dt">\</span></span>
+<span id="cb3-45"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">'$(${coreutils}/bin/basename '</span> <span class="dt">\</span></span>
+<span id="cb3-46"><a aria-hidden="true" tabindex="-1"></a>      <span class="at">--replace-fail</span> <span class="dt">\</span></span>
+<span id="cb3-47"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">'cowsay -f '</span> <span class="dt">\</span></span>
+<span id="cb3-48"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">'${cowsay}/bin/cowsay -f '</span> <span class="dt">\</span></span>
+<span id="cb3-49"><a aria-hidden="true" tabindex="-1"></a>      <span class="at">--replace-fail</span> <span class="dt">\</span></span>
+<span id="cb3-50"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">'cowthink -f '</span> <span class="dt">\</span></span>
+<span id="cb3-51"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">'${cowsay}/bin/cowthink -f '</span></span>
+<span id="cb3-52"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-53"><a aria-hidden="true" tabindex="-1"></a>    <span class="ex">substituteInPlace</span> pokemonthink.sh <span class="dt">\</span></span>
+<span id="cb3-54"><a aria-hidden="true" tabindex="-1"></a>      <span class="at">--replace-fail</span> <span class="dt">\</span></span>
+<span id="cb3-55"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">'./pokemonsay.sh'</span> <span class="dt">\</span></span>
+<span id="cb3-56"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"</span><span class="va">${placeholder</span><span class="er"> "out"</span><span class="va">}</span><span class="st">/bin/pokemonsay"</span></span>
+<span id="cb3-57"><a aria-hidden="true" tabindex="-1"></a>  <span class="st">''</span><span class="kw">;</span></span>
+<span id="cb3-58"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-59"><a aria-hidden="true" tabindex="-1"></a>  <span class="ex">installPhase</span> = <span class="st">''</span></span>
+<span id="cb3-60"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">mkdir</span> <span class="at">-p</span> <span class="va">$out</span>/<span class="dt">{bin</span><span class="op">,</span><span class="dt">share/pokemonsay}</span></span>
+<span id="cb3-61"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">cp</span> pokemonsay.sh <span class="va">$out</span>/bin/pokemonsay</span>
+<span id="cb3-62"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">cp</span> pokemonthink.sh <span class="va">$out</span>/bin/pokemonthink</span>
+<span id="cb3-63"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">cp</span> pokemons/<span class="pp">*</span>.cow <span class="va">$out</span>/share/pokemonsay</span>
+<span id="cb3-64"><a aria-hidden="true" tabindex="-1"></a>  <span class="st">''</span><span class="kw">;</span></span>
+<span id="cb3-65"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-66"><a aria-hidden="true" tabindex="-1"></a>  <span class="ex">doInstallCheck</span> = true<span class="kw">;</span></span>
+<span id="cb3-67"><a aria-hidden="true" tabindex="-1"></a>  <span class="ex">installCheckPhase</span> = <span class="st">''</span></span>
+<span id="cb3-68"><a aria-hidden="true" tabindex="-1"></a>    <span class="kw">(</span><span class="bu">set</span> <span class="at">-x</span></span>
+<span id="cb3-69"><a aria-hidden="true" tabindex="-1"></a>      <span class="bu">test</span> <span class="st">"</span><span class="va">$($out</span><span class="ex">/bin/pokemonsay</span> <span class="at">--list</span> <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span><span class="va">)</span><span class="st">"</span> <span class="at">-ge</span> 891</span>
+<span id="cb3-70"><a aria-hidden="true" tabindex="-1"></a>    <span class="kw">)</span></span>
+<span id="cb3-71"><a aria-hidden="true" tabindex="-1"></a>  <span class="st">''</span><span class="kw">;</span></span>
+<span id="cb3-72"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-73"><a aria-hidden="true" tabindex="-1"></a>  <span class="ex">meta</span> = with lib<span class="kw">;</span> <span class="kw">{</span></span>
+<span id="cb3-74"><a aria-hidden="true" tabindex="-1"></a>    <span class="ex">description</span> = <span class="st">"Print pokemon in the CLI! An adaptation of the classic cowsay"</span><span class="kw">;</span></span>
+<span id="cb3-75"><a aria-hidden="true" tabindex="-1"></a>    <span class="ex">homepage</span> = <span class="st">"https://github.com/HRKings/pokemonsay-newgenerations"</span><span class="kw">;</span></span>
+<span id="cb3-76"><a aria-hidden="true" tabindex="-1"></a>    <span class="ex">license</span> = licenses.mit<span class="kw">;</span></span>
+<span id="cb3-77"><a aria-hidden="true" tabindex="-1"></a>    <span class="ex">platforms</span> = platforms.all<span class="kw">;</span></span>
+<span id="cb3-78"><a aria-hidden="true" tabindex="-1"></a>    <span class="ex">maintainers</span> = with maintainers<span class="kw">;</span> <span class="bu">[</span> pbsds <span class="bu">]</span><span class="kw">;</span></span>
+<span id="cb3-79"><a aria-hidden="true" tabindex="-1"></a>  <span class="kw">};</span></span>
+<span id="cb3-80"><a aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-1-3">
 <div class="codewindow">
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># nix-store --query --requisites $(which pokemonsay)</span></span>
-<span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/m2047a1xwgblgkrnbxz0yilkaqfrbf2b-xgcc-14-20241116-libgcc</span></span>
-<span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/nj19yxkqf0iqjqn4x6dbglsvqk5bgsbs-libunistring-1.3</span></span>
-<span id="cb3-4"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/y2xxdhhjy2l5mgpm3d0rw2wxmpd61my4-libidn2-2.3.7</span></span>
-<span id="cb3-5"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/rmy663w9p7xb202rcln4jjzmvivznmz8-glibc-2.40-66</span></span>
-<span id="cb3-6"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/pn0rk0wsmkjazbz380y8xzb99n8sr07g-attr-2.5.2</span></span>
-<span id="cb3-7"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/4izi23kn57b3cw47jddzq14wcv01b5y5-acl-2.3.2</span></span>
-<span id="cb3-8"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/58br4vk3q5akf4g8lx0pqzfhn47k3j8d-bash-5.2p37</span></span>
-<span id="cb3-9"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/ll9dm3r87v4r46a0km0zck4968m60vys-libxcrypt-4.4.38</span></span>
-<span id="cb3-10"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/xijpnhg8mg0g4lahwrxdwylpcq7249gc-zlib-1.3.1</span></span>
-<span id="cb3-11"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/id29wx2vp10d5xi6wzsykd4rb9ssaikx-gcc-14-20241116-libgcc</span></span>
-<span id="cb3-12"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/ik84lbv5jvjm1xxvdl8mhg52ry3xycvm-gcc-14-20241116-lib</span></span>
-<span id="cb3-13"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/rlpanzl29s3gv3wgs5720q04rbgysl8a-gmp-with-cxx-6.3.0</span></span>
-<span id="cb3-14"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/yh6qg1nsi5h2xblcr67030pz58fsaxx3-coreutils-9.6</span></span>
-<span id="cb3-15"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/8v0r6qxs5cps7cgcjp215895wja6k0by-perl-5.40.0</span></span>
-<span id="cb3-16"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/ixskg19qvf8gfwbdlajc4498c1km1jyf-cowsay-3.8.4</span></span>
-<span id="cb3-17"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/xq5f95pp297afc2xjgrmhmf9w631qp7m-findutils-4.10.0</span></span>
-<span id="cb3-18"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/xq1cs65ic3m0qdpwcjvdgd7yfq8c3ssv-pokemonsay-1.0.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># nix-store --query --requisites $(which pokemonsay)</span></span>
+<span id="cb4-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/m2047a1xwgblgkrnbxz0yilkaqfrbf2b-xgcc-14-20241116-libgcc</span></span>
+<span id="cb4-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/nj19yxkqf0iqjqn4x6dbglsvqk5bgsbs-libunistring-1.3</span></span>
+<span id="cb4-4"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/y2xxdhhjy2l5mgpm3d0rw2wxmpd61my4-libidn2-2.3.7</span></span>
+<span id="cb4-5"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/rmy663w9p7xb202rcln4jjzmvivznmz8-glibc-2.40-66</span></span>
+<span id="cb4-6"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/pn0rk0wsmkjazbz380y8xzb99n8sr07g-attr-2.5.2</span></span>
+<span id="cb4-7"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/4izi23kn57b3cw47jddzq14wcv01b5y5-acl-2.3.2</span></span>
+<span id="cb4-8"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/58br4vk3q5akf4g8lx0pqzfhn47k3j8d-bash-5.2p37</span></span>
+<span id="cb4-9"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/ll9dm3r87v4r46a0km0zck4968m60vys-libxcrypt-4.4.38</span></span>
+<span id="cb4-10"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/xijpnhg8mg0g4lahwrxdwylpcq7249gc-zlib-1.3.1</span></span>
+<span id="cb4-11"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/id29wx2vp10d5xi6wzsykd4rb9ssaikx-gcc-14-20241116-libgcc</span></span>
+<span id="cb4-12"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/ik84lbv5jvjm1xxvdl8mhg52ry3xycvm-gcc-14-20241116-lib</span></span>
+<span id="cb4-13"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/rlpanzl29s3gv3wgs5720q04rbgysl8a-gmp-with-cxx-6.3.0</span></span>
+<span id="cb4-14"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/yh6qg1nsi5h2xblcr67030pz58fsaxx3-coreutils-9.6</span></span>
+<span id="cb4-15"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/8v0r6qxs5cps7cgcjp215895wja6k0by-perl-5.40.0</span></span>
+<span id="cb4-16"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/ixskg19qvf8gfwbdlajc4498c1km1jyf-cowsay-3.8.4</span></span>
+<span id="cb4-17"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/xq5f95pp297afc2xjgrmhmf9w631qp7m-findutils-4.10.0</span></span>
+<span id="cb4-18"><a aria-hidden="true" tabindex="-1"></a><span class="ex">/nix/store/xq1cs65ic3m0qdpwcjvdgd7yfq8c3ssv-pokemonsay-1.0.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-1-4">
@@ -478,21 +557,21 @@ Eric Nantz
 </div>
 <aside class="notes">
 <p>Like a graph database * Entries in store are like nodes, relationships among them are edges</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># edges pointing to R</span></span>
-<span id="cb4-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix-store</span> <span class="at">--query</span> <span class="at">--references</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span></span>
-<span id="cb4-3"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># edges pointing from R (i.e. packages)</span></span>
-<span id="cb4-5"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix-store</span> <span class="at">--query</span> <span class="at">--referers</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span></span>
-<span id="cb4-6"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a aria-hidden="true" tabindex="-1"></a><span class="co"># transitive closure (recursive dependencies)</span></span>
-<span id="cb4-8"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix-store</span> <span class="at">--query</span> <span class="at">--requisites</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span></span>
-<span id="cb4-9"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a aria-hidden="true" tabindex="-1"></a><span class="co"># graph</span></span>
-<span id="cb4-11"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix-store</span> <span class="at">--query</span> <span class="at">--graph</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span> <span class="kw">|</span> <span class="ex">dot</span> <span class="at">-Tsvg</span> <span class="at">-o</span> scratch/r.svg</span>
-<span id="cb4-12"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a aria-hidden="true" tabindex="-1"></a><span class="co"># nix-visualize</span></span>
-<span id="cb4-14"><a aria-hidden="true" tabindex="-1"></a><span class="co"># https://github.com/craigmbooth/nix-visualize</span></span>
-<span id="cb4-15"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix</span> run github:craigmbooth/nix-visualize <span class="at">--</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span> <span class="at">-s</span> R <span class="at">-o</span> scratch/r_graph_depviz.png</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># edges pointing to R</span></span>
+<span id="cb5-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix-store</span> <span class="at">--query</span> <span class="at">--references</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span></span>
+<span id="cb5-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># edges pointing from R (i.e. packages)</span></span>
+<span id="cb5-5"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix-store</span> <span class="at">--query</span> <span class="at">--referers</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span></span>
+<span id="cb5-6"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a aria-hidden="true" tabindex="-1"></a><span class="co"># transitive closure (recursive dependencies)</span></span>
+<span id="cb5-8"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix-store</span> <span class="at">--query</span> <span class="at">--requisites</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span></span>
+<span id="cb5-9"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a aria-hidden="true" tabindex="-1"></a><span class="co"># graph</span></span>
+<span id="cb5-11"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix-store</span> <span class="at">--query</span> <span class="at">--graph</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span> <span class="kw">|</span> <span class="ex">dot</span> <span class="at">-Tsvg</span> <span class="at">-o</span> scratch/r.svg</span>
+<span id="cb5-12"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a aria-hidden="true" tabindex="-1"></a><span class="co"># nix-visualize</span></span>
+<span id="cb5-14"><a aria-hidden="true" tabindex="-1"></a><span class="co"># https://github.com/craigmbooth/nix-visualize</span></span>
+<span id="cb5-15"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nix</span> run github:craigmbooth/nix-visualize <span class="at">--</span> <span class="va">$(</span><span class="fu">which</span> R<span class="va">)</span> <span class="at">-s</span> R <span class="at">-o</span> scratch/r_graph_depviz.png</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -543,22 +622,22 @@ Eric Nantz
 <ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">rix</a></li><li><a href="#tabset-2-2">Nix Config</a></li><li><a href="#tabset-2-3">Bootstrap Demo</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1">
-<div class="sourceCode" id="cb5" data-code-line-numbers="|4|5|6|7-13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">library</span>(rix)</span>
-<span id="cb5-2"><a></a></span>
-<span id="cb5-3"><a></a><span class="fu">rix</span>(</span>
-<span id="cb5-4"><a></a>  <span class="at">r_ver =</span> <span class="st">"4.4.3"</span>,</span>
-<span id="cb5-5"><a></a>  <span class="at">r_pkgs =</span> <span class="fu">c</span>(<span class="st">"shiny"</span>),</span>
-<span id="cb5-6"><a></a>  <span class="at">system_pkgs =</span> <span class="fu">c</span>(<span class="st">"pokemonsay"</span>),</span>
-<span id="cb5-7"><a></a>  <span class="at">git_pkgs =</span> <span class="fu">list</span>(</span>
-<span id="cb5-8"><a></a>    <span class="fu">list</span>(</span>
-<span id="cb5-9"><a></a>      <span class="at">package_name =</span> <span class="st">"doltr"</span>,</span>
-<span id="cb5-10"><a></a>      <span class="at">repo_url =</span> <span class="st">"https://github.com/ecohealthalliance/doltr/"</span>,</span>
-<span id="cb5-11"><a></a>      <span class="at">commit =</span> <span class="st">"ffb5bc68003e83ebdb9f352654bab2515ca6bf3a"</span></span>
-<span id="cb5-12"><a></a>    )</span>
-<span id="cb5-13"><a></a>  ),</span>
-<span id="cb5-14"><a></a>  <span class="at">project_path =</span> <span class="st">"."</span>,</span>
-<span id="cb5-15"><a></a>  <span class="at">overwrite =</span> <span class="cn">TRUE</span></span>
-<span id="cb5-16"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6" data-code-line-numbers="|4|5|6|7-13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">library</span>(rix)</span>
+<span id="cb6-2"><a></a></span>
+<span id="cb6-3"><a></a><span class="fu">rix</span>(</span>
+<span id="cb6-4"><a></a>  <span class="at">r_ver =</span> <span class="st">"4.4.3"</span>,</span>
+<span id="cb6-5"><a></a>  <span class="at">r_pkgs =</span> <span class="fu">c</span>(<span class="st">"shiny"</span>),</span>
+<span id="cb6-6"><a></a>  <span class="at">system_pkgs =</span> <span class="fu">c</span>(<span class="st">"pokemonsay"</span>),</span>
+<span id="cb6-7"><a></a>  <span class="at">git_pkgs =</span> <span class="fu">list</span>(</span>
+<span id="cb6-8"><a></a>    <span class="fu">list</span>(</span>
+<span id="cb6-9"><a></a>      <span class="at">package_name =</span> <span class="st">"doltr"</span>,</span>
+<span id="cb6-10"><a></a>      <span class="at">repo_url =</span> <span class="st">"https://github.com/ecohealthalliance/doltr/"</span>,</span>
+<span id="cb6-11"><a></a>      <span class="at">commit =</span> <span class="st">"ffb5bc68003e83ebdb9f352654bab2515ca6bf3a"</span></span>
+<span id="cb6-12"><a></a>    )</span>
+<span id="cb6-13"><a></a>  ),</span>
+<span id="cb6-14"><a></a>  <span class="at">project_path =</span> <span class="st">"."</span>,</span>
+<span id="cb6-15"><a></a>  <span class="at">overwrite =</span> <span class="cn">TRUE</span></span>
+<span id="cb6-16"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-2-2">
 <pre><code># This file was generated by the {rix} R package v0.15.8 on 2025-04-10
